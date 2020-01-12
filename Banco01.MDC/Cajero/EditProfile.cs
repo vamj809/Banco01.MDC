@@ -13,15 +13,26 @@ namespace Banco01.MDC.Cajero
 {
     public partial class EditProfile : Form
     {
-        private UserData CurrentUser;
-        public EditProfile(UserData _currentUser = null)
+        private ValidaCajero_Result CurrentUser;
+        public EditProfile(ValidaCajero_Result _currentUser = null)
         {
             InitializeComponent();
             if(_currentUser != null) {
-                label1.Text = _currentUser.Usuario + "\n" +
-                              _currentUser.Nombre + "\n" +
-                              _currentUser.Sucursal;
+                CurrentUser = _currentUser;
+                label1.Text = CurrentUser.Usuario + "\n" +
+                              CurrentUser.Nombre + "\n" +
+                              CurrentUser.Sucursal;
             }
+        }
+
+        private void buttonGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

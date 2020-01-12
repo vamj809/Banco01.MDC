@@ -13,17 +13,17 @@ namespace Banco01.MDC
 {
     public partial class CajaMenuPrincipal : Form
     {
-        private UserData CurrentUser;
-        public CajaMenuPrincipal(UserData currentUser = null)
+        private ValidaCajero_Result CurrentUser;
+        public CajaMenuPrincipal(ValidaCajero_Result currentUser = null)
         {
             InitializeComponent();
             if(currentUser != null) {
                 CurrentUser = currentUser;
+                if (currentUser.Nombre.Length > 0)
+                    WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
+                if (currentUser.Sucursal.Length > 0)
+                    this.Text += $" - {currentUser.Sucursal}";
             }
-            if (currentUser.Nombre != null)
-                WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
-            if (currentUser.Sucursal != null)
-                this.Text += $" - {currentUser.Sucursal}";
         }
 
         private void LogOff_Click(object sender, EventArgs e)
