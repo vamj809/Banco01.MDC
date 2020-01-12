@@ -16,5 +16,17 @@ namespace Banco01.MDC
         {
             InitializeComponent();
         }
+
+        private void LogOff_Click(object sender, EventArgs e)
+        {
+            Login form_Login = new Login();
+            this.Hide();
+            form_Login.Show();
+        }
+
+        private void CajaMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

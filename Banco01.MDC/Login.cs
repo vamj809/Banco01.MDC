@@ -17,47 +17,31 @@ namespace Banco01.MDC
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void _testBTN_Click(object sender, EventArgs e)
         {
             TestDB_Connection tdbc = new TestDB_Connection();
             this.Hide();
             tdbc.ShowDialog();
             this.Close();
+        }
+
+        private void buttonAcceso_Click(object sender, EventArgs e)
+        {
+            CajaMenuPrincipal Menu = new CajaMenuPrincipal();
+            this.Hide(); //Esconde esta ventana.
+            Menu.Show(); //Muestra el menu
+        }
+
+        private void buttonSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("¿Seguro desea salir?", "Cerrando el programa", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+                Application.Exit();
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -65,25 +65,26 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(16, 31);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(368, 193);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login:";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // buttonSalir
             // 
             this.buttonSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonSalir.Location = new System.Drawing.Point(44, 130);
-            this.buttonSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSalir.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSalir.Name = "buttonSalir";
             this.buttonSalir.Size = new System.Drawing.Size(112, 37);
-            this.buttonSalir.TabIndex = 4;
+            this.buttonSalir.TabIndex = 3;
             this.buttonSalir.Text = "Salir";
             this.buttonSalir.UseVisualStyleBackColor = true;
+            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
             // label3
             // 
@@ -94,18 +95,18 @@
             this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Usuario";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // buttonAcceso
             // 
             this.buttonAcceso.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAcceso.Location = new System.Drawing.Point(207, 130);
-            this.buttonAcceso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAcceso.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAcceso.Name = "buttonAcceso";
             this.buttonAcceso.Size = new System.Drawing.Size(112, 37);
             this.buttonAcceso.TabIndex = 2;
             this.buttonAcceso.Text = "Acceder";
             this.buttonAcceso.UseVisualStyleBackColor = true;
+            this.buttonAcceso.Click += new System.EventHandler(this.buttonAcceso_Click);
             // 
             // label4
             // 
@@ -116,22 +117,20 @@
             this.label4.Size = new System.Drawing.Size(81, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Contraseña";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(44, 98);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(273, 22);
             this.textBox2.TabIndex = 1;
             this.textBox2.UseSystemPasswordChar = true;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(44, 42);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(273, 22);
             this.textBox1.TabIndex = 0;
@@ -145,7 +144,6 @@
             this.label2.Size = new System.Drawing.Size(329, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Buenos dias. Por favor inicie sesion para continuar";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // _testBTN
             // 
@@ -160,19 +158,21 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.buttonAcceso;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonSalir;
             this.ClientSize = new System.Drawing.Size(397, 234);
             this.Controls.Add(this._testBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(415, 317);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesion";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
