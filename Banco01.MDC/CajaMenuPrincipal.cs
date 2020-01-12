@@ -17,7 +17,8 @@ namespace Banco01.MDC
         public CajaMenuPrincipal(ValidaCajero_Result currentUser = null)
         {
             InitializeComponent();
-            if(currentUser != null) {
+            TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
+            if (currentUser != null) {
                 CurrentUser = currentUser;
                 if (currentUser.Nombre.Length > 0)
                     WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
@@ -26,22 +27,28 @@ namespace Banco01.MDC
             }
         }
 
-        private void LogOff_Click(object sender, EventArgs e)
+        private void CajaMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void LogOffMenuItem_Click(object sender, EventArgs e)
         {
             Login form_Login = new Login();
             this.Hide();
             form_Login.Show();
         }
 
-        private void CajaMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void ProfileEditorBTN_Click(object sender, EventArgs e)
+        private void EditMyProfile_Click(object sender, EventArgs e)
         {
             Cajero.EditProfile formProfileEditor = new Cajero.EditProfile(CurrentUser);
-            formProfileEditor.ShowDialog();
+            this.Hide();
+            formProfileEditor.Show();
+        }
+
+        private void worldTimer_Tick(object sender, EventArgs e)
+        {
+            TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
         }
     }
 }

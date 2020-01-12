@@ -28,60 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CajaMenuPrincipal));
-            this.LogOff = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.MyProfileLink = new System.Windows.Forms.ToolStripDropDownButton();
+            this.EditMyProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogOffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WelcomeLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.MyProfileLink = new System.Windows.Forms.ToolStripSplitButton();
-            this.ProfileEditorBTN = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeOfDayLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dummyLabel01 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.worldTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // LogOff
-            // 
-            this.LogOff.Location = new System.Drawing.Point(909, 13);
-            this.LogOff.Name = "LogOff";
-            this.LogOff.Size = new System.Drawing.Size(75, 52);
-            this.LogOff.TabIndex = 0;
-            this.LogOff.Text = "Cerrar Sesion";
-            this.LogOff.UseVisualStyleBackColor = true;
-            this.LogOff.Click += new System.EventHandler(this.LogOff_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MyProfileLink,
-            this.WelcomeLabel});
+            this.WelcomeLabel,
+            this.TimeOfDayLabel,
+            this.dummyLabel01});
             this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1067, 26);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // WelcomeLabel
-            // 
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(157, 20);
-            this.WelcomeLabel.Text = "                                     ";
-            // 
             // MyProfileLink
             // 
-            this.MyProfileLink.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.MyProfileLink.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ProfileEditorBTN});
+            this.EditMyProfile,
+            this.LogOffMenuItem});
             this.MyProfileLink.Image = ((System.Drawing.Image)(resources.GetObject("MyProfileLink.Image")));
             this.MyProfileLink.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MyProfileLink.Name = "MyProfileLink";
-            this.MyProfileLink.Size = new System.Drawing.Size(39, 24);
+            this.MyProfileLink.Size = new System.Drawing.Size(97, 24);
             this.MyProfileLink.Text = "Mi Perfil";
             // 
-            // ProfileEditorBTN
+            // EditMyProfile
             // 
-            this.ProfileEditorBTN.Name = "ProfileEditorBTN";
-            this.ProfileEditorBTN.Size = new System.Drawing.Size(224, 26);
-            this.ProfileEditorBTN.Text = "Editar mi perfil";
-            this.ProfileEditorBTN.Click += new System.EventHandler(this.ProfileEditorBTN_Click);
+            this.EditMyProfile.Name = "EditMyProfile";
+            this.EditMyProfile.Size = new System.Drawing.Size(189, 26);
+            this.EditMyProfile.Text = "Editar mi Perfil";
+            this.EditMyProfile.Click += new System.EventHandler(this.EditMyProfile_Click);
+            // 
+            // LogOffMenuItem
+            // 
+            this.LogOffMenuItem.Name = "LogOffMenuItem";
+            this.LogOffMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.LogOffMenuItem.Text = "Cerrar Sesión";
+            this.LogOffMenuItem.Click += new System.EventHandler(this.LogOffMenuItem_Click);
+            // 
+            // WelcomeLabel
+            // 
+            this.WelcomeLabel.Name = "WelcomeLabel";
+            this.WelcomeLabel.Size = new System.Drawing.Size(874, 20);
+            this.WelcomeLabel.Spring = true;
+            this.WelcomeLabel.Text = "                                     ";
+            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // TimeOfDayLabel
+            // 
+            this.TimeOfDayLabel.Name = "TimeOfDayLabel";
+            this.TimeOfDayLabel.Size = new System.Drawing.Size(17, 20);
+            this.TimeOfDayLabel.Text = "  ";
+            this.TimeOfDayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TimeOfDayLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.TimeOfDayLabel.ToolTipText = "dd/MM/yyyy hh:mm tt";
+            // 
+            // dummyLabel01
+            // 
+            this.dummyLabel01.Name = "dummyLabel01";
+            this.dummyLabel01.Size = new System.Drawing.Size(25, 20);
+            this.dummyLabel01.Text = "    ";
+            // 
+            // worldTimer
+            // 
+            this.worldTimer.Enabled = true;
+            this.worldTimer.Interval = 500;
+            this.worldTimer.Tick += new System.EventHandler(this.worldTimer_Tick);
             // 
             // CajaMenuPrincipal
             // 
@@ -89,7 +115,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.LogOff);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CajaMenuPrincipal";
             this.Text = "Aplicacion de caja";
@@ -102,11 +127,13 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button LogOff;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel WelcomeLabel;
-        private System.Windows.Forms.ToolStripSplitButton MyProfileLink;
-        private System.Windows.Forms.ToolStripMenuItem ProfileEditorBTN;
+        private System.Windows.Forms.ToolStripStatusLabel TimeOfDayLabel;
+        private System.Windows.Forms.ToolStripDropDownButton MyProfileLink;
+        private System.Windows.Forms.ToolStripMenuItem EditMyProfile;
+        private System.Windows.Forms.ToolStripMenuItem LogOffMenuItem;
+        private System.Windows.Forms.Timer worldTimer;
+        private System.Windows.Forms.ToolStripStatusLabel dummyLabel01;
     }
 }

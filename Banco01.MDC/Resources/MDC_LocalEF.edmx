@@ -16,6 +16,10 @@
           <Property Name="Correo" Type="nvarchar" MaxLength="70" />
           <Property Name="Sucursal" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Function Name="GetCajero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usuario" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetSucursales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ValidaCajero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user" Type="nvarchar" Mode="In" />
           <Parameter Name="passwd" Type="nvarchar" Mode="In" />
@@ -44,11 +48,22 @@
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="passwd" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetCajero" ReturnType="Collection(MDC_LocalDBModel.GetCajero_Result)">
+            <Parameter Name="usuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetSucursales" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="ValidaCajero_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Sucursal" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="GetCajero_Result">
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Clave" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="Sucursal" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -77,6 +92,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCajero" FunctionName="MDC_LocalDBModel.Store.GetCajero">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MDC_LocalDBModel.GetCajero_Result">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSucursales" FunctionName="MDC_LocalDBModel.Store.GetSucursales" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

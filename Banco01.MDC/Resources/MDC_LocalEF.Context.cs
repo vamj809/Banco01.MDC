@@ -41,5 +41,19 @@ namespace Banco01.MDC.Resources
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidaCajero_Result>("ValidaCajero", userParameter, passwdParameter);
         }
+    
+        public virtual ObjectResult<GetCajero_Result> GetCajero(string usuario)
+        {
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("usuario", usuario) :
+                new ObjectParameter("usuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCajero_Result>("GetCajero", usuarioParameter);
+        }
+    
+        public virtual ObjectResult<string> GetSucursales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetSucursales");
+        }
     }
 }

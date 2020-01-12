@@ -27,18 +27,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProfile));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textUsuario = new System.Windows.Forms.TextBox();
+            this.textClave = new System.Windows.Forms.TextBox();
+            this.textClave_2 = new System.Windows.Forms.TextBox();
+            this.textNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textCorreo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textSucursal = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -53,7 +56,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 138);
+            this.label2.Location = new System.Drawing.Point(39, 165);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 17);
             this.label2.TabIndex = 1;
@@ -68,39 +71,40 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Contraseña:";
             // 
-            // textBox1
+            // textUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(126, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 22);
-            this.textBox1.TabIndex = 3;
+            this.textUsuario.Location = new System.Drawing.Point(126, 51);
+            this.textUsuario.Name = "textUsuario";
+            this.textUsuario.Size = new System.Drawing.Size(153, 22);
+            this.textUsuario.TabIndex = 3;
             // 
-            // textBox2
+            // textClave
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 94);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 22);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.textClave.Location = new System.Drawing.Point(126, 94);
+            this.textClave.Name = "textClave";
+            this.textClave.Size = new System.Drawing.Size(153, 22);
+            this.textClave.TabIndex = 4;
+            this.textClave.UseSystemPasswordChar = true;
             // 
-            // textBox3
+            // textClave_2
             // 
-            this.textBox3.Location = new System.Drawing.Point(126, 135);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(153, 22);
-            this.textBox3.TabIndex = 5;
+            this.textClave_2.Location = new System.Drawing.Point(126, 131);
+            this.textClave_2.Name = "textClave_2";
+            this.textClave_2.Size = new System.Drawing.Size(153, 22);
+            this.textClave_2.TabIndex = 5;
+            this.textClave_2.UseSystemPasswordChar = true;
             // 
-            // textBox4
+            // textNombre
             // 
-            this.textBox4.Location = new System.Drawing.Point(126, 176);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(153, 22);
-            this.textBox4.TabIndex = 7;
+            this.textNombre.Location = new System.Drawing.Point(126, 170);
+            this.textNombre.Name = "textNombre";
+            this.textNombre.Size = new System.Drawing.Size(153, 22);
+            this.textNombre.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 176);
+            this.label4.Location = new System.Drawing.Point(39, 203);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 6;
@@ -108,59 +112,84 @@
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(42, 258);
+            this.buttonGuardar.Location = new System.Drawing.Point(65, 278);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
-            this.buttonGuardar.TabIndex = 8;
+            this.buttonGuardar.TabIndex = 20;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(204, 258);
+            this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelar.Location = new System.Drawing.Point(204, 278);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelar.TabIndex = 9;
+            this.buttonCancelar.TabIndex = 25;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
-            // textBox5
+            // textCorreo
             // 
-            this.textBox5.Location = new System.Drawing.Point(126, 212);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(153, 22);
-            this.textBox5.TabIndex = 11;
+            this.textCorreo.Location = new System.Drawing.Point(126, 206);
+            this.textCorreo.Name = "textCorreo";
+            this.textCorreo.Size = new System.Drawing.Size(153, 22);
+            this.textCorreo.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 212);
+            this.label5.Location = new System.Drawing.Point(39, 239);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Sucursal:";
             // 
+            // textSucursal
+            // 
+            this.textSucursal.Location = new System.Drawing.Point(126, 239);
+            this.textSucursal.Name = "textSucursal";
+            this.textSucursal.Size = new System.Drawing.Size(153, 22);
+            this.textSucursal.TabIndex = 13;
+            this.textSucursal.UseSystemPasswordChar = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(39, 125);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 34);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Confirme\r\nContraseña:";
+            // 
             // EditProfile
             // 
+            this.AcceptButton = this.buttonGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 313);
-            this.Controls.Add(this.textBox5);
+            this.CancelButton = this.buttonCancelar;
+            this.ClientSize = new System.Drawing.Size(336, 336);
+            this.Controls.Add(this.textSucursal);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textCorreo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonGuardar);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textNombre);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textClave_2);
+            this.Controls.Add(this.textClave);
+            this.Controls.Add(this.textUsuario);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditProfile";
-            this.Text = "EditProfile";
+            this.Text = " Mi Perfil";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditProfile_FormClosing);
+            this.Load += new System.EventHandler(this.EditProfile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,14 +200,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textUsuario;
+        private System.Windows.Forms.TextBox textClave;
+        private System.Windows.Forms.TextBox textClave_2;
+        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.TextBox textCorreo;
+        private System.Windows.Forms.TextBox textSucursal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Button buttonCancelar;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

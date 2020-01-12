@@ -92,16 +92,11 @@
     <Compile Include="Resources\Cajeros.cs">
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="Resources\MDC_LocalDataSet.cs">
-      <DependentUpon>MDC_LocalDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\MDC_LocalDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MDC_LocalDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\GetCajero_Result.cs">
+      <DependentUpon>MDC_LocalEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Resources\MDC_LocalEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -140,17 +135,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Resources\MDC_LocalDataSet.xsc">
-      <DependentUpon>MDC_LocalDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Resources\MDC_LocalDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MDC_LocalDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Resources\MDC_LocalDataSet.xss">
-      <DependentUpon>MDC_LocalDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -201,6 +185,7 @@
       <DependentUpon>MDC_LocalEF.edmx</DependentUpon>
       <LastGenOutput>MDC_LocalEF.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\UserIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
