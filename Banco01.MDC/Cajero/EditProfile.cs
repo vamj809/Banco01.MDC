@@ -19,11 +19,12 @@ namespace Banco01.MDC.Cajero
     {
         private ValidaCajero_Result CurrentUser;
         private Cajeros detalles_cajero;
-        private static bool safeToClose = true;
+        private static bool detectedChanges = false;
         public EditProfile(ValidaCajero_Result _currentUser)
         {
             InitializeComponent();
             CurrentUser = _currentUser;
+            detalles_cajero = new Cajeros();
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace Banco01.MDC.Cajero
             else {
                 //SaveChanges.
                 using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
-                    detalles_cajero = localDBEntity.Cajeros.Find(detalles_cajero.ID);
+                    detalles_cajero = localDBEntity.Cajeros.Where(d => d.ID == detalles_cajero.ID)?.First();
                     detalles_cajero.Usuario = textUsuario.Text;
                     //Si puso una nueva contraseña, guarda la nueva... sino, pues no.
                     if(textClave_2.Text == "")
@@ -52,8 +53,9 @@ namespace Banco01.MDC.Cajero
                     detalles_cajero.Correo = textCorreo.Text;
                     detalles_cajero.Sucursal = textSucursal.Text;
                     localDBEntity.SaveChanges();
-                    safeToClose = true;
-                    MessageBox.Show("Cambios guardados satisfactoriamente.","Exito",MessageBoxButtons.OK);
+                    detectedChanges = false;
+                    MessageBox.Show("Cambios guardados satisfactoriamente.\n" +
+                        "Para ver los cambios, cierre la sesión y vuelva a ingresar.","Exito",MessageBoxButtons.OK);
                     this.Close();
                 }
             }
@@ -83,8 +85,8 @@ namespace Banco01.MDC.Cajero
                     textCorreo.Text = datosUsuario.Correo;
                     textSucursal.Text = datosUsuario.Sucursal;
                     //Esto servirá para saber a quien le actualizamos los valores:
-                    detalles_cajero.ID = datosUsuario.ID;
-                    safeToClose = true;
+                    detalles_cajero = localDBEntity.Cajeros.Find(datosUsuario.ID);
+                    detectedChanges = false;
                     break;
                 }
             }
@@ -93,13 +95,13 @@ namespace Banco01.MDC.Cajero
         private void EditProfile_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Verifica que si han habido cambios, preguntará para confirmar que quiere salir sin guardar.
-            if (!safeToClose) {
+            if (detectedChanges) {
                 DialogResult dr = MessageBox.Show("¿Seguro desea cerrar sin guardar los cambios?", "¿Está seguro?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dr == DialogResult.No) {
                     e.Cancel = true;
                     return;
                 }
-            } 
+            }
             CajaMenuPrincipal Menu = new CajaMenuPrincipal(CurrentUser);
             this.Hide();
             Menu.Show();
@@ -107,7 +109,7 @@ namespace Banco01.MDC.Cajero
 
         private void dataChanged(object sender, EventArgs e)
         {
-            safeToClose = false;
+            detectedChanges = true;
         }
     }
 }
