@@ -10,22 +10,10 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// /*<param name="disposing">true if managed resources should be disposed; otherwise, false.</param>*/
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         protected override void Dispose(bool disposing)
@@ -97,7 +85,7 @@
             this.buttonSalir.TabIndex = 3;
             this.buttonSalir.Text = "Salir";
             this.buttonSalir.UseVisualStyleBackColor = true;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
+            this.buttonSalir.Click += new System.EventHandler(this.ButtonSalir_Click);
             // 
             // label3
             // 
@@ -119,7 +107,7 @@
             this.buttonAcceso.TabIndex = 2;
             this.buttonAcceso.Text = "Acceder";
             this.buttonAcceso.UseVisualStyleBackColor = true;
-            this.buttonAcceso.Click += new System.EventHandler(this.buttonAcceso_Click);
+            this.buttonAcceso.Click += new System.EventHandler(this.ButtonAcceso_Click);
             // 
             // label4
             // 

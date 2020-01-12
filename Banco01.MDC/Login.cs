@@ -18,7 +18,7 @@ namespace Banco01.MDC
             InitializeComponent();
         }
 
-        private void buttonAcceso_Click(object sender, EventArgs e)
+        private void ButtonAcceso_Click(object sender, EventArgs e)
         {
             MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities();
             foreach (ValidaCajero_Result usuario in localDBEntity.ValidaCajero(UserTXT.Text, PassTXT.Text)) {
@@ -36,7 +36,7 @@ namespace Banco01.MDC
             UserTXT.Focus();
         }
 
-        private void buttonSalir_Click(object sender, EventArgs e)
+        private void ButtonSalir_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("¿Seguro desea salir?", "Cerrando el programa", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
