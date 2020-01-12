@@ -51,5 +51,13 @@ namespace Banco01.MDC
         {
 
         }
+
+        private void _testBTN_Click(object sender, EventArgs e)
+        {
+            TestDB_Connection tdbc = new TestDB_Connection();
+            this.Hide();
+            tdbc.ShowDialog();
+            this.Close();
+        }
     }
 }

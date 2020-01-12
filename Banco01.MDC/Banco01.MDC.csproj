@@ -76,6 +76,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Temp_MDC_LocalDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Temp_MDC_LocalDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TestDB_Connection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestDB_Connection.Designer.cs">
+      <DependentUpon>TestDB_Connection.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CajaMenuPrincipal.resx">
       <DependentUpon>CajaMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +103,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TestDB_Connection.resx">
+      <DependentUpon>TestDB_Connection.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,6 +115,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Temp_MDC_LocalDBDataSet.xsc">
+      <DependentUpon>Temp_MDC_LocalDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\Temp_MDC_LocalDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Temp_MDC_LocalDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Temp_MDC_LocalDBDataSet.xss">
+      <DependentUpon>Temp_MDC_LocalDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -116,6 +141,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\MDC_LocalDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MDC_LocalDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>MDC_LocalDB.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
