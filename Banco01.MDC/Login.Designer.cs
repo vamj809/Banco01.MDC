@@ -49,21 +49,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonAcceso = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PassTXT = new System.Windows.Forms.TextBox();
+            this.UserTXT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this._testBTN = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.buttonSalir);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.buttonAcceso);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.PassTXT);
+            this.groupBox1.Controls.Add(this.UserTXT);
             this.groupBox1.Location = new System.Drawing.Point(16, 31);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -118,22 +119,22 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Contraseña";
             // 
-            // textBox2
+            // PassTXT
             // 
-            this.textBox2.Location = new System.Drawing.Point(44, 98);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(273, 22);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.PassTXT.Location = new System.Drawing.Point(44, 98);
+            this.PassTXT.Margin = new System.Windows.Forms.Padding(4);
+            this.PassTXT.Name = "PassTXT";
+            this.PassTXT.Size = new System.Drawing.Size(273, 22);
+            this.PassTXT.TabIndex = 1;
+            this.PassTXT.UseSystemPasswordChar = true;
             // 
-            // textBox1
+            // UserTXT
             // 
-            this.textBox1.Location = new System.Drawing.Point(44, 42);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(273, 22);
-            this.textBox1.TabIndex = 0;
+            this.UserTXT.Location = new System.Drawing.Point(44, 42);
+            this.UserTXT.Margin = new System.Windows.Forms.Padding(4);
+            this.UserTXT.Name = "UserTXT";
+            this.UserTXT.Size = new System.Drawing.Size(273, 22);
+            this.UserTXT.TabIndex = 0;
             // 
             // label2
             // 
@@ -145,16 +146,16 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Buenos dias. Por favor inicie sesion para continuar";
             // 
-            // _testBTN
+            // label1
             // 
-            this._testBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._testBTN.Location = new System.Drawing.Point(357, 6);
-            this._testBTN.Name = "_testBTN";
-            this._testBTN.Size = new System.Drawing.Size(25, 27);
-            this._testBTN.TabIndex = 5;
-            this._testBTN.Text = "?";
-            this._testBTN.UseVisualStyleBackColor = true;
-            this._testBTN.Click += new System.EventHandler(this._testBTN_Click);
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(259, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "test/test";
             // 
             // Login
             // 
@@ -163,7 +164,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonSalir;
             this.ClientSize = new System.Drawing.Size(397, 234);
-            this.Controls.Add(this._testBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -183,14 +183,14 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PassTXT;
+        private System.Windows.Forms.TextBox UserTXT;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonAcceso;
         private System.Windows.Forms.Button buttonSalir;
-        private System.Windows.Forms.Button _testBTN;
+        private System.Windows.Forms.Label label1;
     }
 }
 

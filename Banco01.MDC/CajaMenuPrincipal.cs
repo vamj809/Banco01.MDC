@@ -12,9 +12,13 @@ namespace Banco01.MDC
 {
     public partial class CajaMenuPrincipal : Form
     {
-        public CajaMenuPrincipal()
+        public CajaMenuPrincipal(string nombre = null, string sucursal = null)
         {
             InitializeComponent();
+            if (nombre != null)
+                WelcomeLabel.Text = $"Bienvenido/a {nombre}";
+            if (sucursal != null)
+                this.Text += $" - {sucursal}";
         }
 
         private void LogOff_Click(object sender, EventArgs e)
