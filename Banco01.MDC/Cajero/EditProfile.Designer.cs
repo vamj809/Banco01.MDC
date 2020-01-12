@@ -157,7 +157,6 @@
             this.textSucursal.Name = "textSucursal";
             this.textSucursal.Size = new System.Drawing.Size(153, 22);
             this.textSucursal.TabIndex = 13;
-            this.textSucursal.UseSystemPasswordChar = true;
             this.textSucursal.TextChanged += new System.EventHandler(this.dataChanged);
             // 
             // label6
