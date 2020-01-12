@@ -49,7 +49,7 @@
             <Parameter Name="passwd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCajero" ReturnType="Collection(MDC_LocalDBModel.GetCajero_Result)">
-            <Parameter Name="usuario" Mode="In" Type="String" />
+          <Parameter Name="usuario" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetSucursales" ReturnType="Collection(String)" />
         </EntityContainer>
@@ -64,6 +64,7 @@
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Correo" Nullable="true" MaxLength="70" />
           <Property Type="String" Name="Sucursal" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -100,6 +101,7 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

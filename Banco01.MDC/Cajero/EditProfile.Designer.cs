@@ -77,6 +77,7 @@
             this.textUsuario.Name = "textUsuario";
             this.textUsuario.Size = new System.Drawing.Size(153, 22);
             this.textUsuario.TabIndex = 3;
+            this.textUsuario.TextChanged += new System.EventHandler(this.dataChanged);
             // 
             // textClave
             // 
@@ -85,6 +86,7 @@
             this.textClave.Size = new System.Drawing.Size(153, 22);
             this.textClave.TabIndex = 4;
             this.textClave.UseSystemPasswordChar = true;
+            this.textClave.TextChanged += new System.EventHandler(this.dataChanged);
             // 
             // textClave_2
             // 
@@ -100,6 +102,7 @@
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(153, 22);
             this.textNombre.TabIndex = 7;
+            this.textNombre.TextChanged += new System.EventHandler(this.dataChanged);
             // 
             // label4
             // 
@@ -137,6 +140,7 @@
             this.textCorreo.Name = "textCorreo";
             this.textCorreo.Size = new System.Drawing.Size(153, 22);
             this.textCorreo.TabIndex = 11;
+            this.textCorreo.TextChanged += new System.EventHandler(this.dataChanged);
             // 
             // label5
             // 
@@ -154,6 +158,7 @@
             this.textSucursal.Size = new System.Drawing.Size(153, 22);
             this.textSucursal.TabIndex = 13;
             this.textSucursal.UseSystemPasswordChar = true;
+            this.textSucursal.TextChanged += new System.EventHandler(this.dataChanged);
             // 
             // label6
             // 
@@ -162,7 +167,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 34);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Confirme\r\nContraseña:";
+            this.label6.Text = "Nueva \r\nContraseña:";
             // 
             // EditProfile
             // 
@@ -185,7 +190,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditProfile";
             this.Text = " Mi Perfil";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditProfile_FormClosing);
