@@ -59,25 +59,5 @@ namespace Banco01.MDC.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] MDC_LocalDB {
-            get {
-                object obj = ResourceManager.GetObject("MDC_LocalDB", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] MDC_LocalDB_log {
-            get {
-                object obj = ResourceManager.GetObject("MDC_LocalDB_log", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
