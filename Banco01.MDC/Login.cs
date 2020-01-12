@@ -25,8 +25,12 @@ namespace Banco01.MDC
             MDC_LocalDataSet.ValidaCajeroDataTable datos = validaCajero.isValid(UserTXT.Text, PassTXT.Text);
             if(datos.Count > 0) {
                 //Esto manda el nombre del cajero/a y la sucursal al menu principal.
-                CajaMenuPrincipal Menu = new CajaMenuPrincipal(
-                    datos.Rows[0].ItemArray[0].ToString(), datos.Rows[0].ItemArray[1].ToString());
+                UserData CurrentUser = new UserData() {
+                    Usuario = UserTXT.Text,
+                    Nombre = datos.Rows[0].ItemArray[0].ToString(),
+                    Sucursal = datos.Rows[0].ItemArray[1].ToString()
+                };
+                CajaMenuPrincipal Menu = new CajaMenuPrincipal(CurrentUser);
                 this.Hide(); //Esconde esta ventana.
                 Menu.Show(); //Muestra el menu
             } else {

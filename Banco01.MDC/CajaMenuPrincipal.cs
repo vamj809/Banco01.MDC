@@ -7,18 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Banco01.MDC.Resources;
 
 namespace Banco01.MDC
 {
     public partial class CajaMenuPrincipal : Form
     {
-        public CajaMenuPrincipal(string nombre = null, string sucursal = null)
+        private UserData CurrentUser;
+        public CajaMenuPrincipal(UserData currentUser = null)
         {
             InitializeComponent();
-            if (nombre != null)
-                WelcomeLabel.Text = $"Bienvenido/a {nombre}";
-            if (sucursal != null)
-                this.Text += $" - {sucursal}";
+            if(currentUser != null) {
+                CurrentUser = currentUser;
+            }
+            if (currentUser.Nombre != null)
+                WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
+            if (currentUser.Sucursal != null)
+                this.Text += $" - {currentUser.Sucursal}";
         }
 
         private void LogOff_Click(object sender, EventArgs e)
@@ -31,6 +36,12 @@ namespace Banco01.MDC
         private void CajaMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ProfileEditorBTN_Click(object sender, EventArgs e)
+        {
+            Cajero.EditProfile formProfileEditor = new Cajero.EditProfile(CurrentUser);
+            formProfileEditor.ShowDialog();
         }
     }
 }

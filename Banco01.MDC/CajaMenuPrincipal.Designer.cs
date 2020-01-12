@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CajaMenuPrincipal));
             this.LogOff = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.WelcomeLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.MyProfileLink = new System.Windows.Forms.ToolStripSplitButton();
+            this.ProfileEditorBTN = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,17 +51,37 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MyProfileLink,
             this.WelcomeLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 530);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1067, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 26);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // WelcomeLabel
             // 
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(0, 18);
+            this.WelcomeLabel.Size = new System.Drawing.Size(157, 20);
+            this.WelcomeLabel.Text = "                                     ";
+            // 
+            // MyProfileLink
+            // 
+            this.MyProfileLink.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MyProfileLink.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProfileEditorBTN});
+            this.MyProfileLink.Image = ((System.Drawing.Image)(resources.GetObject("MyProfileLink.Image")));
+            this.MyProfileLink.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MyProfileLink.Name = "MyProfileLink";
+            this.MyProfileLink.Size = new System.Drawing.Size(39, 24);
+            this.MyProfileLink.Text = "Mi Perfil";
+            // 
+            // ProfileEditorBTN
+            // 
+            this.ProfileEditorBTN.Name = "ProfileEditorBTN";
+            this.ProfileEditorBTN.Size = new System.Drawing.Size(224, 26);
+            this.ProfileEditorBTN.Text = "Editar mi perfil";
+            this.ProfileEditorBTN.Click += new System.EventHandler(this.ProfileEditorBTN_Click);
             // 
             // CajaMenuPrincipal
             // 
@@ -83,5 +106,7 @@
         private System.Windows.Forms.Button LogOff;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel WelcomeLabel;
+        private System.Windows.Forms.ToolStripSplitButton MyProfileLink;
+        private System.Windows.Forms.ToolStripMenuItem ProfileEditorBTN;
     }
 }
