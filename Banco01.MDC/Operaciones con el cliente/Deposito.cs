@@ -34,13 +34,24 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != null && textBox2.Text != null && textBox3 != null)
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" )
             {
+                string nombre = textBox1.Text;
+                string NumeroCuenta = textBox2.Text;
+                decimal monto = Convert.ToDecimal(textBox3.Text);
 
+
+                DialogResult dr2 = MessageBox.Show("¿Esta seguro de que estos son los datos correctos?", "Confirmacion de datos ", MessageBoxButtons.YesNo);
+                if (dr2 == DialogResult.Yes)
+                {
+                    MessageBox.Show("Deposito realizado con exito");
+                }
+
+                
             }
             else { 
                 
-                DialogResult dr2 = MessageBox.Show("Parece que algun campo se quedo vacio. Por favor introduzctodos los datos", "Datos no introducidos",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult dr2 = MessageBox.Show("Parece que algun campo se quedo vacio. Por favor introduzca todos los datos", "Datos no introducidos",MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }
