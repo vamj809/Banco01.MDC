@@ -40,15 +40,17 @@
             this.TimeOfDayLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dummyLabel01 = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorldTimer = new System.Windows.Forms.Timer(this.components);
-            this.Button1 = new System.Windows.Forms.Button();
-            this.Button2 = new System.Windows.Forms.Button();
-            this.Button3 = new System.Windows.Forms.Button();
+            this.FinalizarCuadreButton = new System.Windows.Forms.Button();
             this.DetallesCuadre = new System.Windows.Forms.GroupBox();
             this.BalanceActualLabel = new System.Windows.Forms.Label();
             this.BalanceTitleLabel = new System.Windows.Forms.Label();
             this.CashInputButton = new System.Windows.Forms.Button();
+            this.buttonWithdraw = new System.Windows.Forms.Button();
+            this.buttonDeposit = new System.Windows.Forms.Button();
+            this.OperacionesGroupBox = new System.Windows.Forms.GroupBox();
             this.statusStrip1.SuspendLayout();
             this.DetallesCuadre.SuspendLayout();
+            this.OperacionesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -59,10 +61,11 @@
             this.WelcomeLabel,
             this.TimeOfDayLabel,
             this.dummyLabel01});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 424);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 293);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(800, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(603, 26);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -110,10 +113,10 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(673, 21);
+            this.WelcomeLabel.Size = new System.Drawing.Size(476, 21);
             this.WelcomeLabel.Spring = true;
             this.WelcomeLabel.Text = "                                     ";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TimeOfDayLabel
             // 
@@ -136,43 +139,23 @@
             this.WorldTimer.Interval = 500;
             this.WorldTimer.Tick += new System.EventHandler(this.WorldTimer_Tick);
             // 
-            // Button1
+            // FinalizarCuadreButton
             // 
-            this.Button1.Location = new System.Drawing.Point(172, 60);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(260, 70);
-            this.Button1.TabIndex = 2;
-            this.Button1.Text = "Realizar Operaciones con clientes";
-            this.Button1.UseVisualStyleBackColor = true;
-            this.Button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // Button2
-            // 
-            this.Button2.Location = new System.Drawing.Point(8, 178);
-            this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(176, 53);
-            this.Button2.TabIndex = 3;
-            this.Button2.Text = "Finalizar el dia y realizar el cuadre";
-            this.Button2.UseVisualStyleBackColor = true;
-            this.Button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // Button3
-            // 
-            this.Button3.Location = new System.Drawing.Point(172, 172);
-            this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(260, 70);
-            this.Button3.TabIndex = 4;
-            this.Button3.Text = "Solicitar mas efectivo a la sucursal principal";
-            this.Button3.UseVisualStyleBackColor = true;
-            this.Button3.Click += new System.EventHandler(this.Button3_Click);
+            this.FinalizarCuadreButton.Location = new System.Drawing.Point(8, 178);
+            this.FinalizarCuadreButton.Name = "FinalizarCuadreButton";
+            this.FinalizarCuadreButton.Size = new System.Drawing.Size(176, 53);
+            this.FinalizarCuadreButton.TabIndex = 3;
+            this.FinalizarCuadreButton.Text = "Finalizar el dia y realizar el cuadre";
+            this.FinalizarCuadreButton.UseVisualStyleBackColor = true;
+            this.FinalizarCuadreButton.Click += new System.EventHandler(this.FinalizarCuadreButton_Click);
             // 
             // DetallesCuadre
             // 
             this.DetallesCuadre.Controls.Add(this.BalanceActualLabel);
             this.DetallesCuadre.Controls.Add(this.BalanceTitleLabel);
-            this.DetallesCuadre.Controls.Add(this.Button2);
+            this.DetallesCuadre.Controls.Add(this.FinalizarCuadreButton);
             this.DetallesCuadre.Controls.Add(this.CashInputButton);
-            this.DetallesCuadre.Location = new System.Drawing.Point(594, 172);
+            this.DetallesCuadre.Location = new System.Drawing.Point(371, 32);
             this.DetallesCuadre.Margin = new System.Windows.Forms.Padding(4);
             this.DetallesCuadre.Name = "DetallesCuadre";
             this.DetallesCuadre.Padding = new System.Windows.Forms.Padding(4);
@@ -217,16 +200,48 @@
             this.CashInputButton.Visible = false;
             this.CashInputButton.Click += new System.EventHandler(this.CashInputButton_Click);
             // 
+            // buttonWithdraw
+            // 
+            this.buttonWithdraw.Location = new System.Drawing.Point(28, 142);
+            this.buttonWithdraw.Name = "buttonWithdraw";
+            this.buttonWithdraw.Size = new System.Drawing.Size(260, 70);
+            this.buttonWithdraw.TabIndex = 9;
+            this.buttonWithdraw.Text = "Realizar un Retiro";
+            this.buttonWithdraw.UseVisualStyleBackColor = true;
+            this.buttonWithdraw.Click += new System.EventHandler(this.buttonWithdraw_Click);
+            // 
+            // buttonDeposit
+            // 
+            this.buttonDeposit.Location = new System.Drawing.Point(28, 52);
+            this.buttonDeposit.Name = "buttonDeposit";
+            this.buttonDeposit.Size = new System.Drawing.Size(260, 70);
+            this.buttonDeposit.TabIndex = 8;
+            this.buttonDeposit.Text = "Realizar un Deposito";
+            this.buttonDeposit.UseVisualStyleBackColor = true;
+            this.buttonDeposit.Click += new System.EventHandler(this.buttonDeposit_Click);
+            // 
+            // OperacionesGroupBox
+            // 
+            this.OperacionesGroupBox.Controls.Add(this.buttonDeposit);
+            this.OperacionesGroupBox.Controls.Add(this.buttonWithdraw);
+            this.OperacionesGroupBox.Location = new System.Drawing.Point(27, 32);
+            this.OperacionesGroupBox.Name = "OperacionesGroupBox";
+            this.OperacionesGroupBox.Size = new System.Drawing.Size(312, 242);
+            this.OperacionesGroupBox.TabIndex = 10;
+            this.OperacionesGroupBox.TabStop = false;
+            this.OperacionesGroupBox.Text = "Operaciones con el Cliente";
+            // 
             // CajaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(603, 319);
+            this.Controls.Add(this.OperacionesGroupBox);
             this.Controls.Add(this.DetallesCuadre);
-            this.Controls.Add(this.Button3);
-            this.Controls.Add(this.Button1);
             this.Controls.Add(this.statusStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "CajaMenuPrincipal";
             this.Text = "Aplicacion de caja";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CajaMenuPrincipal_FormClosing);
@@ -234,6 +249,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.DetallesCuadre.ResumeLayout(false);
+            this.OperacionesGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,14 +264,15 @@
         private System.Windows.Forms.ToolStripMenuItem LogOffMenuItem;
         private System.Windows.Forms.Timer WorldTimer;
         private System.Windows.Forms.ToolStripStatusLabel dummyLabel01;
-        private System.Windows.Forms.Button Button1;
-        private System.Windows.Forms.Button Button2;
-        private System.Windows.Forms.Button Button3;
+        private System.Windows.Forms.Button FinalizarCuadreButton;
         private System.Windows.Forms.GroupBox DetallesCuadre;
         private System.Windows.Forms.Label BalanceActualLabel;
         private System.Windows.Forms.Label BalanceTitleLabel;
         private System.Windows.Forms.Button CashInputButton;
         private System.Windows.Forms.ToolStripSeparator newUserSeparator;
         private System.Windows.Forms.ToolStripMenuItem newUserMenuItem;
+        private System.Windows.Forms.Button buttonWithdraw;
+        private System.Windows.Forms.Button buttonDeposit;
+        private System.Windows.Forms.GroupBox OperacionesGroupBox;
     }
 }

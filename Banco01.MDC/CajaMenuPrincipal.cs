@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Banco01.MDC.Resources;
 using Banco01.MDC.Cajero;
 using Banco01.MDC.Cuadre;
+using Banco01.MDC.Operaciones_con_el_cliente;
 using log4net;
 using System.Globalization;
 
@@ -68,26 +69,40 @@ namespace Banco01.MDC
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            DialogResult slctDeEfectivo = MessageBox.Show("ADVERTENCIA: Esta opcion enviara una solicitud a la sucursal principal para que envien mas fondos a esta sucursal. ¿Desea Proseguir? ", "Solicitud de Fondos", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (slctDeEfectivo == DialogResult.Yes)
-                MessageBox.Show("La solicitud fue enviada y aprobada satisfactoriamente, los fondos llegaran en breve.", "Solicitud aprobada");
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-
+            //DialogResult slctDeEfectivo = MessageBox.Show("ADVERTENCIA: Esta opcion enviara una solicitud a la sucursal principal para que envien mas fondos a esta sucursal. ¿Desea Proseguir? ", "Solicitud de Fondos", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            //if (slctDeEfectivo == DialogResult.Yes)
+            //    MessageBox.Show("La solicitud fue enviada y aprobada satisfactoriamente, los fondos llegaran en breve.", "Solicitud aprobada");
         }
 
         private void CajaMenuPrincipal_Load(object sender, EventArgs e)
         {
             using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                int id_cuadre = -1;
+                decimal monto = 0;
+                foreach (var data in localDBEntity.CuadreDiario) {
+                    if (data.Fecha.Date == DateTime.Now.Date) {
+                        id_cuadre = data.ID;
+                        monto = data.Monto_Inicio;
+                        break;
+                    }
+                }
+                
+                if(id_cuadre != -1) {
+                    foreach (var data in localDBEntity.HistorialTransacciones.Where(d => d.IDCuadre == id_cuadre)) {
+                        monto += data.Monto;
+                    }
+                    BalanceActualLabel.Text = monto.ToString("C");
+                    return;
+                }
+                /*
                 foreach(var data in localDBEntity.CuadreDiario) {
                     if (data.Fecha.Date == DateTime.Now.Date) {
                         if(data.Monto_Fin != null)
                             BalanceActualLabel.Text = data.Monto_Fin?.ToString("C");
                         return;
                     }
-                }
+                }*/
+
                 //Si llega a este significa que no ha iniciado el cuadre del dia.
                 CuadreDiario detalles_cuadre = new CuadreDiario {
                     Monto_Inicio = new Random().Next(20, 100) * 1000,
@@ -152,9 +167,36 @@ namespace Banco01.MDC
             nuevoPerfil.ShowDialog();
         }
 
-        private void BalanceActualLabel_Click(object sender, EventArgs e)
+        private void buttonDeposit_Click(object sender, EventArgs e)
         {
+            Deposito form_Deposito = new Deposito(CurrentUser);
+            this.Hide();
+            form_Deposito.Show();
+        }
 
+        private void buttonWithdraw_Click(object sender, EventArgs e)
+        {
+            ComprobacionCliente form_Comprobacion = new ComprobacionCliente(CurrentUser);
+            this.Hide();
+            form_Comprobacion.Show();
+        }
+
+        private void FinalizarCuadreButton_Click(object sender, EventArgs e)
+        {
+            int DateID = -1;
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                foreach (var data in localDBEntity.CuadreDiario) {
+                    if (data.Fecha.Date == DateTime.Now.Date) {
+                        DateID = data.ID;
+                        break;
+                    }
+                }
+                decimal BalanceActual = Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency);
+                CuadreDiario datos_cuadre = localDBEntity.CuadreDiario.Find(DateID);
+                datos_cuadre.Monto_Fin = BalanceActual;
+                localDBEntity.SaveChanges();
+                Logger.Info($"Caja cerrada con {BalanceActual}.");
+            }
         }
     }
 }

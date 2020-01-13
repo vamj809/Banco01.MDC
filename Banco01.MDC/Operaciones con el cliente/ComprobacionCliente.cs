@@ -41,9 +41,9 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void buttonVolver_Click(object sender, EventArgs e)
         {
-            OperacionesCliente form_OpClientes = new OperacionesCliente();
+            CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
             this.Hide();
-            form_OpClientes.Show();
+            form_MainMenu.Show();
         }
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
@@ -51,10 +51,9 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
             if (textBox1.Text != "" && textBox2.Text != "")
             {
                 MessageBox.Show("Datos correctos", "Datos Correctos");
-                Retirar form_Retiro = new Retirar();
+                Retirar form_Retiro = new Retirar(CurrentUser);
                 this.Hide();
                 form_Retiro.Show();
-
             }
             else
                 MessageBox.Show("Por favor llene todos los campos");
