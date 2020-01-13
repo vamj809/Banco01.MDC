@@ -71,9 +71,12 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OperacionesCliente form_OpClientes = new OperacionesCliente();
+            //OperacionesCliente form_OpClientes = new OperacionesCliente();
+            //this.Hide();
+            //form_OpClientes.Show();
+            CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
             this.Hide();
-            form_OpClientes.Show();
+            form_MainMenu.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -110,12 +113,18 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     //**** Sección de Cuadre ****//
 
                     MessageBox.Show("Retiro realizado con exito");
-                    OperacionesCliente form_OpClientes = new OperacionesCliente();
+                    //OperacionesCliente form_OpClientes = new OperacionesCliente();
+                    //this.Hide();
+                    //form_OpClientes.Show();
+                    CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
                     this.Hide();
-                    form_OpClientes.Show();
+                    form_MainMenu.Show();
                 }
 
 
+            } else {
+                DialogResult dr = MessageBox.Show("Debe llenar los campos pertinentes.", "Accion Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboBox1.Focus();
             }
         }
     }
