@@ -45,6 +45,8 @@
             this.BalanceActualLabel = new System.Windows.Forms.Label();
             this.BalanceTitleLabel = new System.Windows.Forms.Label();
             this.CashInputButton = new System.Windows.Forms.Button();
+            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.DetallesCuadre.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +70,9 @@
             // 
             this.MyProfileLink.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.EditMyProfile,
-            this.LogOffMenuItem});
+            this.LogOffMenuItem,
+            this.newUserSeparator,
+            this.newUserMenuItem});
             this.MyProfileLink.Image = ((System.Drawing.Image)(resources.GetObject("MyProfileLink.Image")));
             this.MyProfileLink.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MyProfileLink.Name = "MyProfileLink";
@@ -78,14 +82,14 @@
             // EditMyProfile
             // 
             this.EditMyProfile.Name = "EditMyProfile";
-            this.EditMyProfile.Size = new System.Drawing.Size(151, 22);
+            this.EditMyProfile.Size = new System.Drawing.Size(183, 22);
             this.EditMyProfile.Text = "Editar mi Perfil";
             this.EditMyProfile.Click += new System.EventHandler(this.EditMyProfile_Click);
             // 
             // LogOffMenuItem
             // 
             this.LogOffMenuItem.Name = "LogOffMenuItem";
-            this.LogOffMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.LogOffMenuItem.Size = new System.Drawing.Size(183, 22);
             this.LogOffMenuItem.Text = "Cerrar Sesión";
             this.LogOffMenuItem.Click += new System.EventHandler(this.LogOffMenuItem_Click);
             // 
@@ -194,7 +198,21 @@
             this.CashInputButton.TabIndex = 0;
             this.CashInputButton.Text = "Entrada Manual de Efectivo";
             this.CashInputButton.UseVisualStyleBackColor = true;
+            this.CashInputButton.Visible = false;
             this.CashInputButton.Click += new System.EventHandler(this.CashInputButton_Click);
+            // 
+            // newUserMenuItem
+            // 
+            this.newUserMenuItem.Name = "newUserMenuItem";
+            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
+            this.newUserMenuItem.Visible = false;
+            // 
+            // newUserSeparator
+            // 
+            this.newUserSeparator.Name = "newUserSeparator";
+            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
+            this.newUserSeparator.Visible = false;
             // 
             // CajaMenuPrincipal
             // 
@@ -235,5 +253,7 @@
         private System.Windows.Forms.Label BalanceActualLabel;
         private System.Windows.Forms.Label BalanceTitleLabel;
         private System.Windows.Forms.Button CashInputButton;
+        private System.Windows.Forms.ToolStripSeparator newUserSeparator;
+        private System.Windows.Forms.ToolStripMenuItem newUserMenuItem;
     }
 }

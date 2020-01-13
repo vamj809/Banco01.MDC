@@ -20,12 +20,14 @@ namespace Banco01.MDC
         public CajaMenuPrincipal(ValidaCajero_Result currentUser = null)
         {
             InitializeComponent();
-            Logger.Info($"{currentUser.Usuario} acaba de iniciar sesión.");
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             if (currentUser != null) {
                 CurrentUser = currentUser;
-                if (currentUser.isAdmin == false)
-                    CashInputButton.Visible = false;
+                if (currentUser.isAdmin) {
+                    CashInputButton.Visible = true;
+                    newUserMenuItem.Visible = true;
+                    newUserSeparator.Visible = true;
+                }
                 if (currentUser.Nombre.Length > 0)
                     WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
                 if (currentUser.Sucursal.Length > 0)
@@ -40,6 +42,7 @@ namespace Banco01.MDC
 
         private void LogOffMenuItem_Click(object sender, EventArgs e)
         {
+            Logger.Info($"{CurrentUser.Usuario} acaba de cerrar sesión via menu.");
             Login form_Login = new Login();
             this.Hide();
             form_Login.Show();
