@@ -1,6 +1,6 @@
 ﻿namespace Banco01.MDC
 {
-    partial class OperacionesCLiente
+    partial class OperacionesCliente
     {
         /// <summary>
         /// Required designer variable.

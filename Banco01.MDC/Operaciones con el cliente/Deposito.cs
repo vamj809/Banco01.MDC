@@ -7,13 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Banco01.MDC.Resources;
+using Banco01.MDC.Cajero;
 
 namespace Banco01.MDC.Operaciones_con_el_cliente
 {
     public partial class Deposito : Form
     {
-        public Deposito()
+        private ValidaCajero_Result CurrentUser;
+        public Deposito(ValidaCajero_Result _currentUser = null)
         {
+            if (_currentUser == null) {
+                _currentUser = new CajeroEspecial();
+            }
+            CurrentUser = _currentUser;
             InitializeComponent();
         }
 
@@ -63,7 +70,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OperacionesCLiente form_OpClientes = new OperacionesCLiente();
+            OperacionesCliente form_OpClientes = new OperacionesCliente();
             this.Hide();
             form_OpClientes.Show();
         }

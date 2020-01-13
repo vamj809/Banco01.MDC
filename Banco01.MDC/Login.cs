@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
+using Banco01.MDC.Cajero;
 using log4net;
 
 namespace Banco01.MDC
@@ -25,13 +26,22 @@ namespace Banco01.MDC
             MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities();
             foreach (ValidaCajero_Result usuario in localDBEntity.ValidaCajero(UserTXT.Text, PassTXT.Text)) {
                 if(usuario != null) {
-                    Logger.Info($"{usuario} acaba de iniciar sesión.");
+                    Logger.Info($"{usuario.Usuario} acaba de iniciar sesión.");
                     //Esto manda el nombre del cajero/a y la sucursal al menu principal.
                     CajaMenuPrincipal Menu = new CajaMenuPrincipal(usuario);
                     this.Hide(); //Esconde esta ventana.
                     Menu.Show(); //Muestra el menu
                     return; //Termina el ciclo y sale del metodo.
                 }
+            }
+            if (!localDBEntity.Database.Exists()) {
+                ValidaCajero_Result usuario = new CajeroEspecial();
+                Logger.Info($"{usuario.Usuario} acaba de iniciar sesión.");
+                //Esto manda el nombre del cajero/a y la sucursal al menu principal.
+                CajaMenuPrincipal Menu = new CajaMenuPrincipal(usuario);
+                this.Hide(); //Esconde esta ventana.
+                Menu.Show(); //Muestra el menu
+                return; //Termina el ciclo y sale del metodo.
             }
             //Si llegó a este punto, entonces el usuario y/o contraseña están invalidos,
             //... o hay errores de conexion con la DB.

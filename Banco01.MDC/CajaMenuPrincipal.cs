@@ -19,21 +19,25 @@ namespace Banco01.MDC
     {
         private static readonly ILog Logger = LogManager.GetLogger(System.Environment.MachineName);
         private ValidaCajero_Result CurrentUser;
-        public CajaMenuPrincipal(ValidaCajero_Result currentUser = null)
+        public CajaMenuPrincipal(ValidaCajero_Result _currentUser = null)
         {
+            if(_currentUser == null) {
+                _currentUser = new CajeroEspecial();
+            }
+            CurrentUser = _currentUser;
             InitializeComponent();
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
-            if (currentUser != null) {
-                CurrentUser = currentUser;
-                if (currentUser.isAdmin) {
+            if (_currentUser != null) {
+                CurrentUser = _currentUser;
+                if (_currentUser.isAdmin) {
                     CashInputButton.Visible = true;
                     newUserMenuItem.Visible = true;
                     newUserSeparator.Visible = true;
                 }
-                if (currentUser.Nombre.Length > 0)
-                    WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
-                if (currentUser.Sucursal.Length > 0)
-                    this.Text += $" - {currentUser.Sucursal}";
+                if (_currentUser.Nombre.Length > 0)
+                    WelcomeLabel.Text = $"Bienvenido/a {_currentUser.Nombre}";
+                if (_currentUser.Sucursal.Length > 0)
+                    this.Text += $" - {_currentUser.Sucursal}";
             }
         }
 
@@ -104,7 +108,7 @@ namespace Banco01.MDC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OperacionesCLiente form_OpClientes = new OperacionesCLiente();
+            OperacionesCliente form_OpClientes = new OperacionesCliente();
             this.Hide();
             form_OpClientes.Show();
         }

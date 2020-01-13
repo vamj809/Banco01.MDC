@@ -83,6 +83,7 @@
     <Compile Include="Cajero\AddProfile.Designer.cs">
       <DependentUpon>AddProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cajero\CajeroEspecial.cs" />
     <Compile Include="Cajero\EditProfile.cs">
       <SubType>Form</SubType>
     </Compile>

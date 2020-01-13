@@ -8,13 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Banco01.MDC.Resources;
+using Banco01.MDC.Cajero;
 
 namespace Banco01.MDC
 {
-    public partial class OperacionesCLiente : Form
+    public partial class OperacionesCliente : Form
     {
-        public OperacionesCLiente()
+        private ValidaCajero_Result CurrentUser;
+        public OperacionesCliente(ValidaCajero_Result _currentUser = null)
         {
+            if (_currentUser == null) {
+                _currentUser = new CajeroEspecial();
+            }
+            CurrentUser = _currentUser;
             InitializeComponent();
         }
 
