@@ -42,6 +42,7 @@
             this.PassTXT = new System.Windows.Forms.TextBox();
             this.UserTXT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonPrueba = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,6 +149,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Buenos dias. Por favor inicie sesion para continuar";
             // 
+            // buttonPrueba
+            // 
+            this.buttonPrueba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrueba.Location = new System.Drawing.Point(346, 6);
+            this.buttonPrueba.Name = "buttonPrueba";
+            this.buttonPrueba.Size = new System.Drawing.Size(36, 29);
+            this.buttonPrueba.TabIndex = 3;
+            this.buttonPrueba.Text = "?";
+            this.buttonPrueba.UseVisualStyleBackColor = true;
+            this.buttonPrueba.Click += new System.EventHandler(this.buttonPrueba_Click);
+            // 
             // Login
             // 
             this.AcceptButton = this.buttonAcceso;
@@ -155,6 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonSalir;
             this.ClientSize = new System.Drawing.Size(397, 234);
+            this.Controls.Add(this.buttonPrueba);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -183,6 +196,7 @@
         private System.Windows.Forms.Button buttonAcceso;
         private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonPrueba;
     }
 }
 

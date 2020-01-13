@@ -47,5 +47,10 @@ namespace Banco01.MDC
         {
             Application.Exit();
         }
+
+        private void buttonPrueba_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
