@@ -31,5 +31,10 @@ namespace Banco01.MDC.Cuadre
                 Logger.Info($"Han entrado {valor} a la caja.");
             }
         }
+
+        private void CentroCuadres_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
