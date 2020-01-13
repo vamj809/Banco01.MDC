@@ -151,5 +151,10 @@ namespace Banco01.MDC
             AddProfile nuevoPerfil = new AddProfile();
             nuevoPerfil.ShowDialog();
         }
+
+        private void BalanceActualLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

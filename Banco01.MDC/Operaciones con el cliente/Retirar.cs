@@ -41,9 +41,19 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
-
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities())
+            {
+                foreach (var data in localDBEntity.CuadreDiario)
+                {
+                    if (data.Fecha.Date == DateTime.Now.Date)
+                    {
+                        if (data.Monto_Fin != null)
+                            label7.Text = data.Monto_Fin?.ToString("C");
+                        return;
+                    }
+                }
+            }
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -83,8 +93,30 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                 DialogResult dr2 = MessageBox.Show("¿Esta seguro de que estos son los datos correctos?", "Confirmacion de datos ", MessageBoxButtons.YesNo);
                 if (dr2 == DialogResult.Yes)
                 {
+
+                    using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities())
+                    {
+                        foreach (var data in localDBEntity.CuadreDiario)
+                        {
+                            if (data.Fecha.Date == DateTime.Now.Date)
+                            {
+                                if (data.Monto_Fin < textBox1.Value) { 
+                                    MessageBox.Show("La transaccion no puede ser procesada, debido a que el cliente solicito mas de lo que hay en caja.","Transaccion denegada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                                
+                            }
+                        }
+                    }
+
                     var context = new MDC_LocalDBEntities();
+
                     
+
                     //**** Sección de Cuadre ****//
                     int id_cuadre = -1;
                     foreach (var data in context.CuadreDiario) {
@@ -117,6 +149,11 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
 
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
