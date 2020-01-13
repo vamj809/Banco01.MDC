@@ -52,5 +52,10 @@ namespace Banco01.MDC
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

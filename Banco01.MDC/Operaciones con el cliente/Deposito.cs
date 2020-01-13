@@ -34,7 +34,27 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text != null && textBox2.Text != null && textBox3 != null)
+            {
 
+            }
+            else { 
+                
+                DialogResult dr2 = MessageBox.Show("Parece que algun campo se quedo vacio. Por favor introduzctodos los datos", "Datos no introducidos",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void Deposito_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OperacionesCLiente form_OpClientes = new OperacionesCLiente();
+            this.Hide();
+            form_OpClientes.Show();
         }
     }
 }

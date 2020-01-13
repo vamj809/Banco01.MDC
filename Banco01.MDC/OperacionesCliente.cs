@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Banco01.MDC.Operaciones_con_el_cliente;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,9 @@ namespace Banco01.MDC
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Deposito form_Deposito = new Deposito();
+            this.Hide();
+            form_Deposito.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
