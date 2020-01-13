@@ -73,7 +73,9 @@ namespace Banco01.MDC
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            OperacionesCLiente form_OpClientes = new OperacionesCLiente();
+            this.Hide();
+            form_OpClientes.Show();
         }
     }
 }
