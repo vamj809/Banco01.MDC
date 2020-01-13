@@ -77,8 +77,9 @@ namespace Banco01.MDC
         private void CajaMenuPrincipal_Load(object sender, EventArgs e)
         {
             using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
-                CuadreDiario detalles_cuadre = localDBEntity.CuadreDiario.Where(d => d.Fecha.Equals(DateTime.Now.Date))?.First();
-                if (detalles_cuadre == null) {
+                var data = localDBEntity.CuadreDiario.Where(d => d.Fecha == DateTime.Now);
+                if (data.Count() < 1) {
+                    CuadreDiario detalles_cuadre = new CuadreDiario();
                     detalles_cuadre.Monto_Inicio = new Random().Next(20, 100) * 1000;
                     detalles_cuadre.Fecha = DateTime.Now.Date;
                     localDBEntity.CuadreDiario.Add(detalles_cuadre);
