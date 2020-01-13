@@ -163,6 +163,9 @@
     <EmbeddedResource Include="CajaMenuPrincipal.resx">
       <DependentUpon>CajaMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cajero\AddProfile.resx">
+      <DependentUpon>AddProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cajero\EditProfile.resx">
       <DependentUpon>EditProfile.cs</DependentUpon>
     </EmbeddedResource>

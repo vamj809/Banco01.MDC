@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
+using Banco01.MDC.Resources;
 
 namespace Banco01.MDC.Cuadre
 {
@@ -34,7 +35,16 @@ namespace Banco01.MDC.Cuadre
 
         private void CentroCuadres_Load(object sender, EventArgs e)
         {
-
+            using(MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                CuadreDiario detalles_cuadre = localDBEntity.CuadreDiario.Where(d => d.Fecha.Equals(DateTime.Now.Date))?.First();
+                if(detalles_cuadre == null) {
+                    detalles_cuadre.Monto_Inicio = new Random().Next(20, 100) * 1000;
+                    detalles_cuadre.Fecha = DateTime.Now.Date;
+                    localDBEntity.CuadreDiario.Add(detalles_cuadre);
+                    localDBEntity.SaveChanges();
+                    Logger.Info($"Dia inició con {detalles_cuadre.Monto_Inicio} en caja.");
+                }
+            }
         }
     }
 }
