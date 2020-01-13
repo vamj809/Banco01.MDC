@@ -28,14 +28,24 @@
         </EntityType>
         <EntityType Name="DepositoDatos">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Benefactor" Type="nvarchar" MaxLength="50" />
-          <Property Name="Nro de Cuenta" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Benefactor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nro_de_Cuenta" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Especificaciones" Type="nvarchar" MaxLength="500" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="HistorialTransacciones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCajero" Type="int" Nullable="false" />
+          <Property Name="IDCuadre" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
         </EntityType>
         <Function Name="GetCajero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="usuario" Type="nvarchar" Mode="In" />
@@ -49,6 +59,7 @@
           <EntitySet Name="Cajeros" EntityType="Self.Cajeros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CuadreDiario" EntityType="Self.CuadreDiario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepositoDatos" EntityType="Self.DepositoDatos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialTransacciones" EntityType="Self.HistorialTransacciones" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -78,7 +89,8 @@
           <FunctionImport Name="GetSucursales" ReturnType="Collection(String)" />
           <EntitySet Name="CuadreDiario" EntityType="MDC_LocalDBModel.CuadreDiario" />
           <EntitySet Name="DepositoDatos" EntityType="MDC_LocalDBModel.DepositoDatos" />
-        </EntityContainer>
+          <EntitySet Name="HistorialTransacciones" EntityType="MDC_LocalDBModel.HistorialTransacciones" />
+          </EntityContainer>
         <ComplexType Name="ValidaCajero_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Sucursal" Nullable="true" MaxLength="50" />
@@ -105,16 +117,26 @@
         </EntityType>
         <EntityType Name="DepositoDatos">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Benefactor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Nro_de_Cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Benefactor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Especificaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nro_de_Cuenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        <EntityType Name="HistorialTransacciones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCajero" Type="Int32" Nullable="false" />
+          <Property Name="IDCuadre" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Monto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -170,12 +192,23 @@
           <EntitySetMapping Name="DepositoDatos">
             <EntityTypeMapping TypeName="MDC_LocalDBModel.DepositoDatos">
               <MappingFragment StoreEntitySet="DepositoDatos">
+                <ScalarProperty Name="Nro_de_Cuenta" ColumnName="Nro_de_Cuenta" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Especificaciones" ColumnName="Especificaciones" />
-                <ScalarProperty Name="Nro_de_Cuenta" ColumnName="Nro de Cuenta" />
                 <ScalarProperty Name="Benefactor" ColumnName="Benefactor" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialTransacciones">
+            <EntityTypeMapping TypeName="MDC_LocalDBModel.HistorialTransacciones">
+              <MappingFragment StoreEntitySet="HistorialTransacciones">
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IDCuadre" ColumnName="IDCuadre" />
+                <ScalarProperty Name="IDCajero" ColumnName="IDCajero" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

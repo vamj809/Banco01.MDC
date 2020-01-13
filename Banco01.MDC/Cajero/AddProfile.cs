@@ -37,8 +37,9 @@ namespace Banco01.MDC.Cajero
                     textCorreo.Focus();
                 else if (textSucursal.Text == "")
                     textSucursal.Focus();
-                else if (isAdminBox.Checked) { }
-                //Validate user's credentials.
+                else if (isAdminBox.Checked) {
+                    //Validate user's credentials.
+                }
                 else if (localDBEntity.Cajeros.Where(d => d.Usuario == textUsuario.Text).Count() > 0) {
                     MessageBox.Show("El nombre de usuario ya existe.", "Datos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textUsuario.Focus();

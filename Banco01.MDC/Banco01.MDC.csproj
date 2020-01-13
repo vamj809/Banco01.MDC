@@ -90,12 +90,6 @@
     <Compile Include="Cajero\EditProfile.Designer.cs">
       <DependentUpon>EditProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cajero\ValidateCredentials.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cajero\ValidateCredentials.Designer.cs">
-      <DependentUpon>ValidateCredentials.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cuadre\CashInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +150,9 @@
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\GetCajero_Result.cs">
+      <DependentUpon>MDC_LocalEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HistorialTransacciones.cs">
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\MDC_LocalEF.Context.cs">

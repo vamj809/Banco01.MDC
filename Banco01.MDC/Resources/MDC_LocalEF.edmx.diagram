@@ -6,9 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="91cd8dfa22514c5cbf65a03926d47367" Name="Diagram1">
         <EntityTypeShape EntityType="MDC_LocalDBModel.Cajeros" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MDC_LocalDBModel.CuadreDiario" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="MDC_LocalDBModel.DepositoDatos" Width="1.5" PointX="3.375" PointY="3.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="MDC_LocalDBModel.CuadreDiario" Width="1.5" PointX="7" PointY="1.125" />
+        <EntityTypeShape EntityType="MDC_LocalDBModel.DepositoDatos" Width="1.5" PointX="2.5" PointY="3.75" />
+        <EntityTypeShape EntityType="MDC_LocalDBModel.HistorialTransacciones" Width="1.5" PointX="4" PointY="1.25" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
