@@ -18,7 +18,7 @@ namespace Banco01.MDC
     public partial class CajaMenuPrincipal : Form
     {
         private static readonly ILog Logger = LogManager.GetLogger(System.Environment.MachineName);
-        private ValidaCajero_Result CurrentUser;
+        private readonly ValidaCajero_Result CurrentUser;
         public CajaMenuPrincipal(ValidaCajero_Result _currentUser = null)
         {
             if(_currentUser == null) {
@@ -28,7 +28,6 @@ namespace Banco01.MDC
             InitializeComponent();
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             if (_currentUser != null) {
-                CurrentUser = _currentUser;
                 if (_currentUser.isAdmin) {
                     CashInputButton.Visible = true;
                     newUserMenuItem.Visible = true;
@@ -62,19 +61,19 @@ namespace Banco01.MDC
             formProfileEditor.Show();
         }
 
-        private void worldTimer_Tick(object sender, EventArgs e)
+        private void WorldTimer_Tick(object sender, EventArgs e)
         {
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             DialogResult slctDeEfectivo = MessageBox.Show("ADVERTENCIA: Esta opcion enviara una solicitud a la sucursal principal para que envien mas fondos a esta sucursal. ¿Desea Proseguir? ", "Solicitud de Fondos", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (slctDeEfectivo == DialogResult.Yes)
                 MessageBox.Show("La solicitud fue enviada y aprobada satisfactoriamente, los fondos llegaran en breve.", "Solicitud aprobada");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
 
         }
@@ -107,7 +106,7 @@ namespace Banco01.MDC
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             OperacionesCliente form_OpClientes = new OperacionesCliente();
             this.Hide();
@@ -147,7 +146,7 @@ namespace Banco01.MDC
             }
         }
 
-        private void newUserMenuItem_Click(object sender, EventArgs e)
+        private void NewUserMenuItem_Click(object sender, EventArgs e)
         {
             AddProfile nuevoPerfil = new AddProfile();
             nuevoPerfil.ShowDialog();

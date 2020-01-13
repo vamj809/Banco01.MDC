@@ -70,7 +70,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     MessageBox.Show("Deposito realizado con exito");
 
 
-                    OperacionesCLiente form_OpClientes = new OperacionesCLiente();
+                    OperacionesCliente form_OpClientes = new OperacionesCliente();
                     this.Hide();
                     form_OpClientes.Show();
                 }

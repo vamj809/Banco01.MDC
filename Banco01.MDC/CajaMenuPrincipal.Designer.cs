@@ -34,19 +34,19 @@
             this.MyProfileLink = new System.Windows.Forms.ToolStripDropDownButton();
             this.EditMyProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.LogOffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WelcomeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeOfDayLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dummyLabel01 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.worldTimer = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.WorldTimer = new System.Windows.Forms.Timer(this.components);
+            this.Button1 = new System.Windows.Forms.Button();
+            this.Button2 = new System.Windows.Forms.Button();
+            this.Button3 = new System.Windows.Forms.Button();
             this.DetallesCuadre = new System.Windows.Forms.GroupBox();
             this.BalanceActualLabel = new System.Windows.Forms.Label();
             this.BalanceTitleLabel = new System.Windows.Forms.Label();
             this.CashInputButton = new System.Windows.Forms.Button();
-            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.DetallesCuadre.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +93,20 @@
             this.LogOffMenuItem.Text = "Cerrar Sesión";
             this.LogOffMenuItem.Click += new System.EventHandler(this.LogOffMenuItem_Click);
             // 
+            // newUserSeparator
+            // 
+            this.newUserSeparator.Name = "newUserSeparator";
+            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
+            this.newUserSeparator.Visible = false;
+            // 
+            // newUserMenuItem
+            // 
+            this.newUserMenuItem.Name = "newUserMenuItem";
+            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
+            this.newUserMenuItem.Visible = false;
+            this.newUserMenuItem.Click += new System.EventHandler(this.NewUserMenuItem_Click);
+            // 
             // WelcomeLabel
             // 
             this.WelcomeLabel.Name = "WelcomeLabel";
@@ -116,41 +130,41 @@
             this.dummyLabel01.Size = new System.Drawing.Size(19, 21);
             this.dummyLabel01.Text = "    ";
             // 
-            // worldTimer
+            // WorldTimer
             // 
-            this.worldTimer.Enabled = true;
-            this.worldTimer.Interval = 500;
-            this.worldTimer.Tick += new System.EventHandler(this.worldTimer_Tick);
+            this.WorldTimer.Enabled = true;
+            this.WorldTimer.Interval = 500;
+            this.WorldTimer.Tick += new System.EventHandler(this.WorldTimer_Tick);
             // 
-            // button1
+            // Button1
             // 
-            this.button1.Location = new System.Drawing.Point(172, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(260, 70);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Realizar Operaciones con clientes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Button1.Location = new System.Drawing.Point(172, 60);
+            this.Button1.Name = "Button1";
+            this.Button1.Size = new System.Drawing.Size(260, 70);
+            this.Button1.TabIndex = 2;
+            this.Button1.Text = "Realizar Operaciones con clientes";
+            this.Button1.UseVisualStyleBackColor = true;
+            this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // button2
+            // Button2
             // 
-            this.button2.Location = new System.Drawing.Point(172, 281);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(260, 70);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Finalizar el dia y realizar el cuadre";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Button2.Location = new System.Drawing.Point(172, 281);
+            this.Button2.Name = "Button2";
+            this.Button2.Size = new System.Drawing.Size(260, 70);
+            this.Button2.TabIndex = 3;
+            this.Button2.Text = "Finalizar el dia y realizar el cuadre";
+            this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // button3
+            // Button3
             // 
-            this.button3.Location = new System.Drawing.Point(172, 172);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(260, 70);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Solicitar mas efectivo a la sucursal principal";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Button3.Location = new System.Drawing.Point(172, 172);
+            this.Button3.Name = "Button3";
+            this.Button3.Size = new System.Drawing.Size(260, 70);
+            this.Button3.TabIndex = 4;
+            this.Button3.Text = "Solicitar mas efectivo a la sucursal principal";
+            this.Button3.UseVisualStyleBackColor = true;
+            this.Button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // DetallesCuadre
             // 
@@ -201,29 +215,15 @@
             this.CashInputButton.Visible = false;
             this.CashInputButton.Click += new System.EventHandler(this.CashInputButton_Click);
             // 
-            // newUserMenuItem
-            // 
-            this.newUserMenuItem.Name = "newUserMenuItem";
-            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
-            this.newUserMenuItem.Visible = false;
-            this.newUserMenuItem.Click += new System.EventHandler(this.newUserMenuItem_Click);
-            // 
-            // newUserSeparator
-            // 
-            this.newUserSeparator.Name = "newUserSeparator";
-            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
-            this.newUserSeparator.Visible = false;
-            // 
             // CajaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.DetallesCuadre);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Button3);
+            this.Controls.Add(this.Button2);
+            this.Controls.Add(this.Button1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CajaMenuPrincipal";
@@ -245,11 +245,11 @@
         private System.Windows.Forms.ToolStripDropDownButton MyProfileLink;
         private System.Windows.Forms.ToolStripMenuItem EditMyProfile;
         private System.Windows.Forms.ToolStripMenuItem LogOffMenuItem;
-        private System.Windows.Forms.Timer worldTimer;
+        private System.Windows.Forms.Timer WorldTimer;
         private System.Windows.Forms.ToolStripStatusLabel dummyLabel01;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Button1;
+        private System.Windows.Forms.Button Button2;
+        private System.Windows.Forms.Button Button3;
         private System.Windows.Forms.GroupBox DetallesCuadre;
         private System.Windows.Forms.Label BalanceActualLabel;
         private System.Windows.Forms.Label BalanceTitleLabel;
