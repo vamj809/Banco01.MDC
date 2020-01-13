@@ -138,7 +138,6 @@
             this.Name = "CashInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Solicitud de Fondos";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CashInputForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.Monto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

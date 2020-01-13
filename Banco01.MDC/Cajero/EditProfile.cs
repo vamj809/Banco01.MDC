@@ -29,24 +29,25 @@ namespace Banco01.MDC.Cajero
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (textClave.Text == "") {
-                MessageBox.Show("Debe digitar su contraseña para guardar los cambios.",
-                    "Error de autenticación.",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                textClave.Focus();
-            } else if(textClave.Text != detalles_cajero?.Clave) {
-                MessageBox.Show("Contraseña inválida. Verifique su contraseña.",
-                "Error de autenticación.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textClave.Focus();
-            }
-            else {
-                //SaveChanges.
-                using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                if (textClave.Text == "") {
+                    MessageBox.Show("Debe digitar su contraseña para guardar los cambios.",
+                        "Error de autenticación.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textClave.Focus();
+                }
+                else if (textClave.Text != detalles_cajero?.Clave) {
+                    MessageBox.Show("Contraseña inválida. Verifique su contraseña.",
+                    "Error de autenticación.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textClave.Focus();
+                }
+                else {
+                    //SaveChanges.
                     var data = localDBEntity.Cajeros.Where(d => d.ID == detalles_cajero.ID);
-                    if(data.Count() > 0)
+                    if (data.Count() > 0)
                         detalles_cajero = data.First();
                     detalles_cajero.Usuario = textUsuario.Text;
                     //Si puso una nueva contraseña, guarda la nueva... sino, pues no.
-                    if(textClave_2.Text == "")
+                    if (textClave_2.Text == "")
                         detalles_cajero.Clave = textClave.Text;
                     else {
                         detalles_cajero.Clave = textClave_2.Text;
@@ -54,10 +55,10 @@ namespace Banco01.MDC.Cajero
                     detalles_cajero.Nombre = textNombre.Text;
                     detalles_cajero.Correo = textCorreo.Text;
                     detalles_cajero.Sucursal = textSucursal.Text;
-                    localDBEntity.SaveChanges();
+                    localDBEntity.SaveChangesAsync();
                     detectedChanges = false;
                     MessageBox.Show("Cambios guardados satisfactoriamente.\n" +
-                        "Para ver los cambios, cierre la sesión y vuelva a ingresar.","Exito",MessageBoxButtons.OK);
+                        "Para ver los cambios, cierre la sesión y vuelva a ingresar.", "Exito", MessageBoxButtons.OK);
                     this.Close();
                 }
             }

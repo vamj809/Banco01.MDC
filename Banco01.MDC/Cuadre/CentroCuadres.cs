@@ -52,7 +52,7 @@ namespace Banco01.MDC.Cuadre
                 localDBEntity.CuadreDiario.Add(detalles_cuadre);
                 //Logger.Debug($"{detalles_cuadre.Fecha.ToShortDateString()} - {detalles_cuadre.Monto_Inicio}");
                 //Logger.Debug($"{detalles_cuadre.ID} - ID antes del cambio.");
-                localDBEntity.SaveChanges();
+                localDBEntity.SaveChangesAsync();
                 //Logger.Debug($"{detalles_cuadre.ID} - ID después del cambio.");
                 string message = $"Dia inició con {detalles_cuadre.Monto_Inicio.ToString("C")} en caja.";
                 BalanceActualLabel.Text = detalles_cuadre.Monto_Inicio.ToString("C");

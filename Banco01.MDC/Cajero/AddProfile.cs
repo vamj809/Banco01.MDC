@@ -26,29 +26,40 @@ namespace Banco01.MDC.Cajero
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            if (textUsuario.Text == "")
-                textUsuario.Focus();
-            else if (textClave.Text == "")
-                textClave.Focus();
-            else if (textNombre.Text == "")
-                textNombre.Focus();
-            else if (textCorreo.Text == "")
-                textCorreo.Focus();
-            else if (textSucursal.Text == "")
-                textSucursal.Focus();
-            else if (isAdminBox.Checked) { }
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                if (textUsuario.Text == "")
+                    textUsuario.Focus();
+                else if (textClave.Text == "")
+                    textClave.Focus();
+                else if (textNombre.Text == "")
+                    textNombre.Focus();
+                else if (textCorreo.Text == "")
+                    textCorreo.Focus();
+                else if (textSucursal.Text == "")
+                    textSucursal.Focus();
+                else if (isAdminBox.Checked) { }
                 //Validate user's credentials.
-            else {
-                //si todos tienen sus datos...
-                Cajeros nuevo_cajero = new Cajeros() {
-                    Usuario = textUsuario.Text,
-                    Clave = textClave.Text,
-                    Nombre = textNombre.Text,
-                    Correo = textCorreo.Text,
-                    Sucursal = textSucursal.Text,
-                    isAdmin = isAdminBox.Checked
-                };
-                safeToClose = true;
+                else if (localDBEntity.Cajeros.Where(d => d.Usuario == textUsuario.Text).Count() > 0) {
+                    MessageBox.Show("El nombre de usuario ya existe.", "Datos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textUsuario.Focus();
+                }
+                else {
+                    //si todos tienen sus datos...
+                    Cajeros nuevo_cajero = new Cajeros() {
+                        Usuario = textUsuario.Text,
+                        Clave = textClave.Text,
+                        Nombre = textNombre.Text,
+                        Correo = textCorreo.Text,
+                        Sucursal = textSucursal.Text,
+                        isAdmin = isAdminBox.Checked
+                    };
+                    localDBEntity.Cajeros.Add(nuevo_cajero);
+                    localDBEntity.SaveChangesAsync();
+                    safeToClose = true;
+                    MessageBox.Show(
+                        "Usuario agregado satisfactoriamente.", "Completado con Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
             }
         }
 

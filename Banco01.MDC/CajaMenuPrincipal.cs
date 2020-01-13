@@ -84,8 +84,8 @@ namespace Banco01.MDC
             using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
                 foreach(var data in localDBEntity.CuadreDiario) {
                     if (data.Fecha.Date == DateTime.Now.Date) {
-                        if (BalanceActualLabel.Text == "$0.00")
-                            BalanceActualLabel.Text = data.Monto_Inicio.ToString("C");
+                        if(data.Monto_Fin != null)
+                            BalanceActualLabel.Text = data.Monto_Fin?.ToString("C");
                         return;
                     }
                 }
@@ -94,10 +94,11 @@ namespace Banco01.MDC
                     Monto_Inicio = new Random().Next(20, 100) * 1000,
                     Fecha = DateTime.Now.Date
                 };
+                detalles_cuadre.Monto_Fin = detalles_cuadre.Monto_Inicio;
                 localDBEntity.CuadreDiario.Add(detalles_cuadre);
                 //Logger.Debug($"{detalles_cuadre.Fecha.ToShortDateString()} - {detalles_cuadre.Monto_Inicio}");
                 //Logger.Debug($"{detalles_cuadre.ID} - ID antes del cambio.");
-                localDBEntity.SaveChangesAsync();
+                localDBEntity.SaveChanges();
                 //Logger.Debug($"{detalles_cuadre.ID} - ID después del cambio.");
                 string message = $"Dia inició con {detalles_cuadre.Monto_Inicio.ToString("C")} en caja.";
                 BalanceActualLabel.Text = detalles_cuadre.Monto_Inicio.ToString("C");
@@ -116,21 +117,32 @@ namespace Banco01.MDC
         private void CashInputButton_Click(object sender, EventArgs e)
         {
             CashInputForm inputForm = new CashInputForm();
+            decimal montoAgregado = 0;
+            bool addedCash = false;
             if (inputForm.ShowDialog(this) == DialogResult.OK) {
                 //formato: $900,000,000,000,000.00
-                decimal valor = inputForm.Monto.Value;
-                decimal old_value = Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency);
-                BalanceActualLabel.Text = (valor + old_value).ToString("C");
-                Logger.Info($"Han entrado {valor} a la caja.");
-
+                addedCash = true;
+                montoAgregado = inputForm.Monto.Value;
+            }
+            //Realizado de esta forma porque Entity Framework no permite varias ventanas al mismo tiempo,
+            //... cuando se ejecutará una transacción SQL.
+            if (addedCash) {
+                inputForm.Close();
+                inputForm.Dispose();
+                int DateID = -1;
                 using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
                     foreach (var data in localDBEntity.CuadreDiario) {
                         if (data.Fecha.Date == DateTime.Now.Date) {
-                            data.Monto_Fin = (valor + old_value);
-                            localDBEntity.SaveChangesAsync();
-                            return;
+                            DateID = data.ID;
+                            break;
                         }
                     }
+                    decimal BalanceActual = Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency);
+                    CuadreDiario datos_cuadre = localDBEntity.CuadreDiario.Find(DateID);
+                    datos_cuadre.Monto_Fin = (BalanceActual + montoAgregado);
+                    localDBEntity.SaveChanges();
+                    Logger.Info($"Han entrado {montoAgregado.ToString("C")} a la caja.");
+                    BalanceActualLabel.Text = (BalanceActual + montoAgregado).ToString("C");
                 }
             }
         }

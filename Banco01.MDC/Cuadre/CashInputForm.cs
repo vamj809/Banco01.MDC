@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Banco01.MDC.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,16 +23,13 @@ namespace Banco01.MDC.Cuadre
             this.Close();
         }
 
-        private void CashInputForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
+            //formato: $900,000,000,000,000.00
             MessageBox.Show(
-                    "La solicitud fue enviada y aprobada satisfactoriamente, " +
-                    "los fondos llegaran en breve.", "Solicitud aprobada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "La solicitud fue enviada y aprobada satisfactoriamente, " +
+                        "los fondos llegaran en breve.", "Solicitud aprobada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }
