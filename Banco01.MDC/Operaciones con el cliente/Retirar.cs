@@ -43,9 +43,19 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
-
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities())
+            {
+                foreach (var data in localDBEntity.CuadreDiario)
+                {
+                    if (data.Fecha.Date == DateTime.Now.Date)
+                    {
+                        if (data.Monto_Fin != null)
+                            label7.Text = data.Monto_Fin?.ToString("C");
+                        return;
+                    }
+                }
+            }
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -90,12 +100,6 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                 {
                     var context = new MDC_LocalDBEntities();
 
-                    ///**** Verificacion de Balance Suficiente (en la caja) ****///
-                    if(textBox1.Value > BalanceCaja) {
-                        
-                    }
-
-                    ///**** Verificacion de Balance Suficiente (en la caja) ****///
                     //**** Sección de Cuadre ****//
                     int id_cuadre = -1;
                     foreach (var data in context.CuadreDiario) {
@@ -147,6 +151,11 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                 DialogResult dr = MessageBox.Show("Debe llenar los campos pertinentes.", "Accion Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBox1.Focus();
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
