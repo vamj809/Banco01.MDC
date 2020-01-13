@@ -71,7 +71,21 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (comboBox1.SelectedIndex != 0   && textBox1.Text != "")
+            {
 
+
+                DialogResult dr2 = MessageBox.Show("¿Esta seguro de que estos son los datos correctos?", "Confirmacion de datos ", MessageBoxButtons.YesNo);
+                if (dr2 == DialogResult.Yes)
+                {
+                    MessageBox.Show("Retiro realizado con exito");
+                    OperacionesCLiente form_OpClientes = new OperacionesCLiente();
+                    this.Hide();
+                    form_OpClientes.Show();
+                }
+
+
+            }
         }
     }
 }
