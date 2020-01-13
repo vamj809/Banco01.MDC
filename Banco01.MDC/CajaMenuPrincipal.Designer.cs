@@ -173,7 +173,6 @@
             this.BalanceActualLabel.TabIndex = 2;
             this.BalanceActualLabel.Text = "$0.00";
             this.BalanceActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.BalanceActualLabel.Click += new System.EventHandler(this.BalanceActualLabel_Click);
             // 
             // BalanceTitleLabel
             // 
