@@ -50,7 +50,8 @@ namespace Banco01.MDC
 
         private void buttonPrueba_Click(object sender, EventArgs e)
         {
-
+            Cuadre.CentroCuadres _cuadre = new Cuadre.CentroCuadres();
+            _cuadre.ShowDialog();
         }
     }
 }
