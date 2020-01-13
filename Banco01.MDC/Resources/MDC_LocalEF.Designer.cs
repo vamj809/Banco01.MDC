@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\vamj809\source\repos\Banco01.MDC\Banco01.MDC\Resources\MDC_LocalEF.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\defre\source\repos\vamj809\Banco01.MDC\Banco01.MDC\Resources\MDC_LocalEF.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
