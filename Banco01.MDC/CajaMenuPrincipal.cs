@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
+using Banco01.MDC.Cajero;
+using Banco01.MDC.Cuadre;
 using log4net;
 using System.Globalization;
 
@@ -86,7 +88,7 @@ namespace Banco01.MDC
 
         private void CashInputButton_Click(object sender, EventArgs e)
         {
-            Cuadre.CashInputForm inputForm = new Cuadre.CashInputForm();
+            CashInputForm inputForm = new CashInputForm();
             if (inputForm.ShowDialog(this) == DialogResult.OK) {
                 //formato: $900,000,000,000,000.00
                 decimal valor = inputForm.Monto.Value;
@@ -94,6 +96,12 @@ namespace Banco01.MDC
                 BalanceActualLabel.Text = (valor + old_value).ToString("C");
                 Logger.Info($"Han entrado {valor} a la caja.");
             }
+        }
+
+        private void newUserMenuItem_Click(object sender, EventArgs e)
+        {
+            AddProfile nuevoPerfil = new AddProfile();
+            nuevoPerfil.ShowDialog();
         }
     }
 }

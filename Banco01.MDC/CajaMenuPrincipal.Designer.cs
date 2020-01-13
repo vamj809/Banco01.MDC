@@ -96,7 +96,7 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(673, 21);
+            this.WelcomeLabel.Size = new System.Drawing.Size(642, 21);
             this.WelcomeLabel.Spring = true;
             this.WelcomeLabel.Text = "                                     ";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,6 +207,7 @@
             this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
             this.newUserMenuItem.Text = "Crear Nuevo Usuario";
             this.newUserMenuItem.Visible = false;
+            this.newUserMenuItem.Click += new System.EventHandler(this.newUserMenuItem_Click);
             // 
             // newUserSeparator
             // 
