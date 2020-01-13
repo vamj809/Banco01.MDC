@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CajaMenuPrincipal));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.MyProfileLink = new System.Windows.Forms.ToolStripDropDownButton();
+            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.EditMyProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.LogOffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WelcomeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeOfDayLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dummyLabel01 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -82,6 +82,20 @@
             this.MyProfileLink.Size = new System.Drawing.Size(84, 24);
             this.MyProfileLink.Text = "Mi Perfil";
             // 
+            // newUserMenuItem
+            // 
+            this.newUserMenuItem.Name = "newUserMenuItem";
+            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
+            this.newUserMenuItem.Visible = false;
+            this.newUserMenuItem.Click += new System.EventHandler(this.NewUserMenuItem_Click);
+            // 
+            // newUserSeparator
+            // 
+            this.newUserSeparator.Name = "newUserSeparator";
+            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
+            this.newUserSeparator.Visible = false;
+            // 
             // EditMyProfile
             // 
             this.EditMyProfile.Name = "EditMyProfile";
@@ -95,20 +109,6 @@
             this.LogOffMenuItem.Size = new System.Drawing.Size(183, 22);
             this.LogOffMenuItem.Text = "Cerrar Sesión";
             this.LogOffMenuItem.Click += new System.EventHandler(this.LogOffMenuItem_Click);
-            // 
-            // newUserSeparator
-            // 
-            this.newUserSeparator.Name = "newUserSeparator";
-            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
-            this.newUserSeparator.Visible = false;
-            // 
-            // newUserMenuItem
-            // 
-            this.newUserMenuItem.Name = "newUserMenuItem";
-            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
-            this.newUserMenuItem.Visible = false;
-            this.newUserMenuItem.Click += new System.EventHandler(this.NewUserMenuItem_Click);
             // 
             // WelcomeLabel
             // 
@@ -173,6 +173,7 @@
             this.BalanceActualLabel.TabIndex = 2;
             this.BalanceActualLabel.Text = "$0.00";
             this.BalanceActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BalanceActualLabel.Click += new System.EventHandler(this.BalanceActualLabel_Click);
             // 
             // BalanceTitleLabel
             // 
