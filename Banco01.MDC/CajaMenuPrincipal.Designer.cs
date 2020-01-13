@@ -69,10 +69,10 @@
             // MyProfileLink
             // 
             this.MyProfileLink.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditMyProfile,
-            this.LogOffMenuItem,
+            this.newUserMenuItem,
             this.newUserSeparator,
-            this.newUserMenuItem});
+            this.EditMyProfile,
+            this.LogOffMenuItem});
             this.MyProfileLink.Image = ((System.Drawing.Image)(resources.GetObject("MyProfileLink.Image")));
             this.MyProfileLink.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MyProfileLink.Name = "MyProfileLink";
@@ -110,7 +110,7 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(642, 21);
+            this.WelcomeLabel.Size = new System.Drawing.Size(673, 21);
             this.WelcomeLabel.Spring = true;
             this.WelcomeLabel.Text = "                                     ";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -148,9 +148,9 @@
             // 
             // Button2
             // 
-            this.Button2.Location = new System.Drawing.Point(172, 281);
+            this.Button2.Location = new System.Drawing.Point(8, 178);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(260, 70);
+            this.Button2.Size = new System.Drawing.Size(176, 53);
             this.Button2.TabIndex = 3;
             this.Button2.Text = "Finalizar el dia y realizar el cuadre";
             this.Button2.UseVisualStyleBackColor = true;
@@ -170,12 +170,13 @@
             // 
             this.DetallesCuadre.Controls.Add(this.BalanceActualLabel);
             this.DetallesCuadre.Controls.Add(this.BalanceTitleLabel);
+            this.DetallesCuadre.Controls.Add(this.Button2);
             this.DetallesCuadre.Controls.Add(this.CashInputButton);
-            this.DetallesCuadre.Location = new System.Drawing.Point(590, 172);
+            this.DetallesCuadre.Location = new System.Drawing.Point(594, 172);
             this.DetallesCuadre.Margin = new System.Windows.Forms.Padding(4);
             this.DetallesCuadre.Name = "DetallesCuadre";
             this.DetallesCuadre.Padding = new System.Windows.Forms.Padding(4);
-            this.DetallesCuadre.Size = new System.Drawing.Size(197, 242);
+            this.DetallesCuadre.Size = new System.Drawing.Size(193, 242);
             this.DetallesCuadre.TabIndex = 5;
             this.DetallesCuadre.TabStop = false;
             this.DetallesCuadre.Text = "Auditoría";
@@ -222,7 +223,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.DetallesCuadre);
             this.Controls.Add(this.Button3);
-            this.Controls.Add(this.Button2);
             this.Controls.Add(this.Button1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
