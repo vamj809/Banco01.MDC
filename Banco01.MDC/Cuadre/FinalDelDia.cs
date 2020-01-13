@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
+using Banco01.MDC.Cajero;
 
 namespace Banco01.MDC.Cuadre
 {
     public partial class FinalDelDia : Form
     {
-        public FinalDelDia()
+        private readonly ValidaCajero_Result CurrentUser;
+        public FinalDelDia(ValidaCajero_Result _currentUser = null)
         {
+            if (_currentUser == null) {
+                _currentUser = new CajeroEspecial();
+            }
+            CurrentUser = _currentUser;
             InitializeComponent();
         }
 
@@ -35,6 +34,13 @@ namespace Banco01.MDC.Cuadre
                 MontoInicioLabel.Text = datos_cuadre.Monto_Inicio.ToString("C");
                 MontoFinLabel.Text = datos_cuadre.Monto_Fin?.ToString("C");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CajaMenuPrincipal mm = new CajaMenuPrincipal(CurrentUser);
+            this.Hide();
+            mm.Show();
         }
     }
 }
