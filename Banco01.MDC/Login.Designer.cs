@@ -68,12 +68,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(259, 21);
+            this.label1.Location = new System.Drawing.Point(231, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 4;
-            this.label1.Text = "test/test";
+            this.label1.Text = "admin/admin";
             // 
             // buttonSalir
             // 

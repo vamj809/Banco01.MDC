@@ -35,15 +35,29 @@ namespace Banco01.MDC.Cuadre
 
         private void CentroCuadres_Load(object sender, EventArgs e)
         {
-            using(MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
-                CuadreDiario detalles_cuadre = localDBEntity.CuadreDiario.Where(d => d.Fecha.Equals(DateTime.Now.Date))?.First();
-                if(detalles_cuadre == null) {
-                    detalles_cuadre.Monto_Inicio = new Random().Next(20, 100) * 1000;
-                    detalles_cuadre.Fecha = DateTime.Now.Date;
-                    localDBEntity.CuadreDiario.Add(detalles_cuadre);
-                    localDBEntity.SaveChanges();
-                    Logger.Info($"Dia inició con {detalles_cuadre.Monto_Inicio} en caja.");
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                DateTime hoy = DateTime.Now.Date;
+                foreach (var data in localDBEntity.CuadreDiario) {
+                    if (data.Fecha.Date == DateTime.Now.Date) {
+                        if(BalanceActualLabel.Text == "$0.00")
+                            BalanceActualLabel.Text = data.Monto_Inicio.ToString("C");
+                        return;
+                    }
                 }
+                //Si llega a este significa que no ha iniciado el cuadre del dia.
+                CuadreDiario detalles_cuadre = new CuadreDiario {
+                    Monto_Inicio = new Random().Next(20, 100) * 1000,
+                    Fecha = DateTime.Now.Date
+                };
+                localDBEntity.CuadreDiario.Add(detalles_cuadre);
+                //Logger.Debug($"{detalles_cuadre.Fecha.ToShortDateString()} - {detalles_cuadre.Monto_Inicio}");
+                //Logger.Debug($"{detalles_cuadre.ID} - ID antes del cambio.");
+                localDBEntity.SaveChanges();
+                //Logger.Debug($"{detalles_cuadre.ID} - ID después del cambio.");
+                string message = $"Dia inició con {detalles_cuadre.Monto_Inicio.ToString("C")} en caja.";
+                BalanceActualLabel.Text = detalles_cuadre.Monto_Inicio.ToString("C");
+                MessageBox.Show(message, "Inicio de la jornada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Logger.Info(message);
             }
         }
     }
