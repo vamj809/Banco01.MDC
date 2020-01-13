@@ -44,7 +44,8 @@ namespace Banco01.MDC
 
         private void LogOffMenuItem_Click(object sender, EventArgs e)
         {
-            Logger.Info($"{CurrentUser.Usuario} acaba de cerrar sesión via menu.");
+            if(CurrentUser != null)
+                Logger.Info($"{CurrentUser.Usuario} acaba de cerrar sesión via menu.");
             Login form_Login = new Login();
             this.Hide();
             form_Login.Show();
