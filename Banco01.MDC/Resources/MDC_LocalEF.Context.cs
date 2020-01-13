@@ -29,6 +29,7 @@ namespace Banco01.MDC.Resources
     
         public virtual DbSet<Cajeros> Cajeros { get; set; }
         public virtual DbSet<CuadreDiario> CuadreDiario { get; set; }
+        public virtual DbSet<DepositoDatos> DepositoDatos { get; set; }
     
         public virtual ObjectResult<ValidaCajero_Result> ValidaCajero(string user, string passwd)
         {

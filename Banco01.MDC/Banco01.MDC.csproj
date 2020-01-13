@@ -152,6 +152,9 @@
     <Compile Include="Resources\CuadreDiario.cs">
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Resources\DepositoDatos.cs">
+      <DependentUpon>MDC_LocalEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Resources\GetCajero_Result.cs">
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
