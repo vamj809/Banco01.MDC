@@ -15,12 +15,14 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
     public partial class ComprobacionCliente : Form
     {
         private ValidaCajero_Result CurrentUser;
-        public ComprobacionCliente(ValidaCajero_Result _currentUser = null)
+        private decimal Balance;
+        public ComprobacionCliente(ValidaCajero_Result _currentUser = null, decimal _balance = 0)
         {
             if (_currentUser == null) {
                 _currentUser = new CajeroEspecial();
             }
             CurrentUser = _currentUser;
+            Balance = _balance;
             InitializeComponent();
         }
 
@@ -51,7 +53,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
             if (textBox1.Text != "" && textBox2.Text != "")
             {
                 MessageBox.Show("Datos correctos", "Datos Correctos");
-                Retirar form_Retiro = new Retirar(CurrentUser);
+                Retirar form_Retiro = new Retirar(CurrentUser, Balance);
                 this.Hide();
                 form_Retiro.Show();
             }

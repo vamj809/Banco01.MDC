@@ -92,7 +92,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
                     context.DepositoDatos.Add(deposito);
                     context.SaveChanges();
-                    Logger.Info("Deposito realizado con exito.");
+                    Logger.Info($"Han sido depositados {monto.ToString("C")} a la caja.");
                     MessageBox.Show("Deposito realizado con exito");
 
 

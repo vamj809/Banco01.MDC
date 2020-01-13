@@ -143,18 +143,31 @@ namespace Banco01.MDC
             if (addedCash) {
                 inputForm.Close();
                 inputForm.Dispose();
-                int DateID = -1;
                 using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                    int id_cuadre = -1;
                     foreach (var data in localDBEntity.CuadreDiario) {
                         if (data.Fecha.Date == DateTime.Now.Date) {
-                            DateID = data.ID;
+                            id_cuadre = data.ID;
                             break;
                         }
                     }
+                    int id_cajero = -1;
+                    foreach (var data in localDBEntity.GetCajero(CurrentUser.Usuario)) {
+                        id_cajero = data.ID;
+                        break;
+                    }
+
                     decimal BalanceActual = Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency);
-                    CuadreDiario datos_cuadre = localDBEntity.CuadreDiario.Find(DateID);
-                    datos_cuadre.Monto_Fin = (BalanceActual + montoAgregado);
+
+                    var entrada = new HistorialTransacciones() {
+                        IDCajero = id_cajero,
+                        IDCuadre = id_cuadre,
+                        Tipo = "Entrada",
+                        Monto = montoAgregado //M: Tipo Decimal
+                    };
+                    localDBEntity.HistorialTransacciones.Add(entrada);
                     localDBEntity.SaveChanges();
+
                     Logger.Info($"Han entrado {montoAgregado.ToString("C")} a la caja.");
                     BalanceActualLabel.Text = (BalanceActual + montoAgregado).ToString("C");
                 }
@@ -176,7 +189,7 @@ namespace Banco01.MDC
 
         private void buttonWithdraw_Click(object sender, EventArgs e)
         {
-            ComprobacionCliente form_Comprobacion = new ComprobacionCliente(CurrentUser);
+            ComprobacionCliente form_Comprobacion = new ComprobacionCliente(CurrentUser, Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency));
             this.Hide();
             form_Comprobacion.Show();
         }

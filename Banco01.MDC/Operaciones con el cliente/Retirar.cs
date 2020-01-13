@@ -15,12 +15,14 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
     public partial class Retirar : Form
     {
         private ValidaCajero_Result CurrentUser;
-        public Retirar(ValidaCajero_Result _currentUser = null)
+        private decimal BalanceCaja;
+        public Retirar(ValidaCajero_Result _currentUser = null, decimal _balanceCaja = 0)
         {
             if (_currentUser == null) {
                 _currentUser = new CajeroEspecial();
             }
             CurrentUser = _currentUser;
+            BalanceCaja = _balanceCaja;
             InitializeComponent();
         }
 
@@ -87,7 +89,13 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                 if (dr2 == DialogResult.Yes)
                 {
                     var context = new MDC_LocalDBEntities();
-                    
+
+                    ///**** Verificacion de Balance Suficiente (en la caja) ****///
+                    if(textBox1.Value > BalanceCaja) {
+                        
+                    }
+
+                    ///**** Verificacion de Balance Suficiente (en la caja) ****///
                     //**** Sección de Cuadre ****//
                     int id_cuadre = -1;
                     foreach (var data in context.CuadreDiario) {
@@ -102,6 +110,18 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         break;
                     }
                     if (id_cuadre != -1 && id_cajero != -1) {
+                        ///**** Verificacion de Balance Suficiente (en la caja) ****///
+                        if (textBox1.Value > BalanceCaja) {
+                            var entrada = new HistorialTransacciones() {
+                                IDCajero = id_cajero,
+                                IDCuadre = id_cuadre,
+                                Tipo = "Entrada",
+                                Monto = textBox1.Value * 1.5M //M: Tipo Decimal
+                            };
+                            context.HistorialTransacciones.Add(entrada);
+                        }
+                        ///**** Verificacion de Balance Suficiente (en la caja) ****///
+                        
                         var transaccion = new HistorialTransacciones() {
                             IDCajero = id_cajero,
                             IDCuadre = id_cuadre,
@@ -109,6 +129,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                             Monto = -textBox1.Value
                         };
                         context.HistorialTransacciones.Add(transaccion);
+                        context.SaveChanges();
                     }
                     //**** Sección de Cuadre ****//
 
