@@ -43,18 +43,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
-            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities())
-            {
-                foreach (var data in localDBEntity.CuadreDiario)
-                {
-                    if (data.Fecha.Date == DateTime.Now.Date)
-                    {
-                        if (data.Monto_Fin != null)
-                            label7.Text = data.Monto_Fin?.ToString("C");
-                        return;
-                    }
-                }
-            }
+            label7.Text = BalanceCaja.ToString("C");
         }
         private void label1_Click(object sender, EventArgs e)
         {
