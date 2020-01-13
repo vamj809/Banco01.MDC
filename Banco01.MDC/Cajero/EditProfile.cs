@@ -41,7 +41,9 @@ namespace Banco01.MDC.Cajero
             else {
                 //SaveChanges.
                 using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
-                    detalles_cajero = localDBEntity.Cajeros.Where(d => d.ID == detalles_cajero.ID)?.First();
+                    var data = localDBEntity.Cajeros.Where(d => d.ID == detalles_cajero.ID);
+                    if(data.Count() > 0)
+                        detalles_cajero = data.First();
                     detalles_cajero.Usuario = textUsuario.Text;
                     //Si puso una nueva contraseña, guarda la nueva... sino, pues no.
                     if(textClave_2.Text == "")

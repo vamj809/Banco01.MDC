@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
+using Banco01.MDC.Cajero;
+using Banco01.MDC.Cuadre;
 using log4net;
 using System.Globalization;
 
@@ -20,12 +22,14 @@ namespace Banco01.MDC
         public CajaMenuPrincipal(ValidaCajero_Result currentUser = null)
         {
             InitializeComponent();
-            Logger.Info($"{currentUser.Usuario} acaba de iniciar sesión.");
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             if (currentUser != null) {
                 CurrentUser = currentUser;
-                if (currentUser.isAdmin == false)
-                    CashInputButton.Visible = false;
+                if (currentUser.isAdmin) {
+                    CashInputButton.Visible = true;
+                    newUserMenuItem.Visible = true;
+                    newUserSeparator.Visible = true;
+                }
                 if (currentUser.Nombre.Length > 0)
                     WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
                 if (currentUser.Sucursal.Length > 0)
@@ -40,6 +44,7 @@ namespace Banco01.MDC
 
         private void LogOffMenuItem_Click(object sender, EventArgs e)
         {
+            Logger.Info($"{CurrentUser.Usuario} acaba de cerrar sesión via menu.");
             Login form_Login = new Login();
             this.Hide();
             form_Login.Show();
@@ -71,7 +76,17 @@ namespace Banco01.MDC
 
         private void CajaMenuPrincipal_Load(object sender, EventArgs e)
         {
-
+            using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                var data = localDBEntity.CuadreDiario.Where(d => d.Fecha == DateTime.Now);
+                if (data.Count() < 1) {
+                    CuadreDiario detalles_cuadre = new CuadreDiario();
+                    detalles_cuadre.Monto_Inicio = new Random().Next(20, 100) * 1000;
+                    detalles_cuadre.Fecha = DateTime.Now.Date;
+                    localDBEntity.CuadreDiario.Add(detalles_cuadre);
+                    localDBEntity.SaveChanges();
+                    Logger.Info($"Dia inició con {detalles_cuadre.Monto_Inicio} en caja.");
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,7 +98,7 @@ namespace Banco01.MDC
 
         private void CashInputButton_Click(object sender, EventArgs e)
         {
-            Cuadre.CashInputForm inputForm = new Cuadre.CashInputForm();
+            CashInputForm inputForm = new CashInputForm();
             if (inputForm.ShowDialog(this) == DialogResult.OK) {
                 //formato: $900,000,000,000,000.00
                 decimal valor = inputForm.Monto.Value;
@@ -91,6 +106,12 @@ namespace Banco01.MDC
                 BalanceActualLabel.Text = (valor + old_value).ToString("C");
                 Logger.Info($"Han entrado {valor} a la caja.");
             }
+        }
+
+        private void newUserMenuItem_Click(object sender, EventArgs e)
+        {
+            AddProfile nuevoPerfil = new AddProfile();
+            nuevoPerfil.ShowDialog();
         }
     }
 }

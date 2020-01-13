@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
+using log4net;
 
 namespace Banco01.MDC
 {
     public partial class Login : Form
     {
+        private static readonly ILog Logger = LogManager.GetLogger(System.Environment.MachineName);
         public Login()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace Banco01.MDC
             MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities();
             foreach (ValidaCajero_Result usuario in localDBEntity.ValidaCajero(UserTXT.Text, PassTXT.Text)) {
                 if(usuario != null) {
+                    Logger.Info($"{usuario} acaba de iniciar sesión.");
                     //Esto manda el nombre del cajero/a y la sucursal al menu principal.
                     CajaMenuPrincipal Menu = new CajaMenuPrincipal(usuario);
                     this.Hide(); //Esconde esta ventana.

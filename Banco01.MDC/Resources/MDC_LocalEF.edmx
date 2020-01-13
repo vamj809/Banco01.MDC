@@ -17,6 +17,15 @@
           <Property Name="Sucursal" Type="nvarchar" MaxLength="50" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="CuadreDiario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Monto_Inicio" Type="money" Nullable="false" />
+          <Property Name="Monto_Fin" Type="money" />
+        </EntityType>
         <Function Name="GetCajero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="usuario" Type="nvarchar" Mode="In" />
         </Function>
@@ -27,6 +36,7 @@
         </Function>
         <EntityContainer Name="MDC_LocalDBModelStoreContainer">
           <EntitySet Name="Cajeros" EntityType="Self.Cajeros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuadreDiario" EntityType="Self.CuadreDiario" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -54,6 +64,7 @@
           <Parameter Name="usuario" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetSucursales" ReturnType="Collection(String)" />
+          <EntitySet Name="CuadreDiario" EntityType="MDC_LocalDBModel.CuadreDiario" />
         </EntityContainer>
         <ComplexType Name="ValidaCajero_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
@@ -70,6 +81,15 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="Boolean" Name="isAdmin" Nullable="false" />
         </ComplexType>
+        <EntityType Name="CuadreDiario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Monto_Inicio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Monto_Fin" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -113,6 +133,16 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetSucursales" FunctionName="MDC_LocalDBModel.Store.GetSucursales" />
+          <EntitySetMapping Name="CuadreDiario">
+            <EntityTypeMapping TypeName="MDC_LocalDBModel.CuadreDiario">
+              <MappingFragment StoreEntitySet="CuadreDiario">
+                <ScalarProperty Name="Monto_Fin" ColumnName="Monto_Fin" />
+                <ScalarProperty Name="Monto_Inicio" ColumnName="Monto_Inicio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

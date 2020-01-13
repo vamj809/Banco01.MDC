@@ -92,6 +92,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CentroCuadres";
             this.Text = "CentroCuadres";
+            this.Load += new System.EventHandler(this.CentroCuadres_Load);
             this.DetallesCuadre.ResumeLayout(false);
             this.ResumeLayout(false);
 
