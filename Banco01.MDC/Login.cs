@@ -47,5 +47,10 @@ namespace Banco01.MDC
         {
             Application.Exit();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
