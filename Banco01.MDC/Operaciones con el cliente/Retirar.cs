@@ -43,7 +43,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
-            label7.Text = BalanceCaja.ToString("C");
+            //label7.Text = BalanceCaja.ToString("C");
         }
         private void label1_Click(object sender, EventArgs e)
         {
