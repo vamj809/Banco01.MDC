@@ -77,14 +77,21 @@ namespace Banco01.MDC
         private void CajaMenuPrincipal_Load(object sender, EventArgs e)
         {
             using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
-                var data = localDBEntity.CuadreDiario.Where(d => d.Fecha == DateTime.Now);
+                DateTime hoy = DateTime.Now.Date;
+                var data = localDBEntity.CuadreDiario.Where(d => d.Fecha == hoy);
                 if (data.Count() < 1) {
-                    CuadreDiario detalles_cuadre = new CuadreDiario();
-                    detalles_cuadre.Monto_Inicio = new Random().Next(20, 100) * 1000;
-                    detalles_cuadre.Fecha = DateTime.Now.Date;
+                    CuadreDiario detalles_cuadre = new CuadreDiario {
+                        Monto_Inicio = new Random().Next(20, 100) * 1000,
+                        Fecha = DateTime.Now.Date
+                    };
                     localDBEntity.CuadreDiario.Add(detalles_cuadre);
+                    //Logger.Debug($"{detalles_cuadre.Fecha.ToShortDateString()} - {detalles_cuadre.Monto_Inicio}");
+                    //Logger.Debug($"{detalles_cuadre.ID} - ID antes del cambio.");
                     localDBEntity.SaveChanges();
-                    Logger.Info($"Dia inició con {detalles_cuadre.Monto_Inicio} en caja.");
+                    //Logger.Debug($"{detalles_cuadre.ID} - ID después del cambio.");
+                    string message = $"Dia inició con {detalles_cuadre.Monto_Inicio.ToString("C")} en caja.";
+                    MessageBox.Show(message,"Inicio de la jornada",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    Logger.Info(message);
                 }
             }
         }
