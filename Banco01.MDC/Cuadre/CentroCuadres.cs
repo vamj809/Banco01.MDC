@@ -24,7 +24,7 @@ namespace Banco01.MDC.Cuadre
         {
             CashInputForm inputForm = new CashInputForm();
             if (inputForm.ShowDialog(this) == DialogResult.OK) {
-                //$900,000,000,000,000.00
+                //formato: $900,000,000,000,000.00
                 decimal valor = inputForm.Monto.Value;
                 decimal old_value = Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency);
                 BalanceActualLabel.Text = (valor + old_value).ToString("C");

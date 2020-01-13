@@ -24,6 +24,11 @@ namespace Banco01.MDC.Cuadre
 
         private void CashInputForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
+        }
+
+        private void buttonAceptar_Click(object sender, EventArgs e)
+        {
             MessageBox.Show(
                     "La solicitud fue enviada y aprobada satisfactoriamente, " +
                     "los fondos llegaran en breve.", "Solicitud aprobada", MessageBoxButtons.OK, MessageBoxIcon.Information);

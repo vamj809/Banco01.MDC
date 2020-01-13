@@ -41,7 +41,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.DetallesCuadre = new System.Windows.Forms.GroupBox();
+            this.BalanceActualLabel = new System.Windows.Forms.Label();
+            this.BalanceTitleLabel = new System.Windows.Forms.Label();
+            this.CashInputButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
+            this.DetallesCuadre.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -115,7 +120,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(277, 59);
+            this.button1.Location = new System.Drawing.Point(172, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(260, 70);
             this.button1.TabIndex = 2;
@@ -125,7 +130,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(277, 296);
+            this.button2.Location = new System.Drawing.Point(172, 281);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(260, 70);
             this.button2.TabIndex = 3;
@@ -135,7 +140,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(277, 175);
+            this.button3.Location = new System.Drawing.Point(172, 172);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(260, 70);
             this.button3.TabIndex = 4;
@@ -143,11 +148,60 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // DetallesCuadre
+            // 
+            this.DetallesCuadre.Controls.Add(this.BalanceActualLabel);
+            this.DetallesCuadre.Controls.Add(this.BalanceTitleLabel);
+            this.DetallesCuadre.Controls.Add(this.CashInputButton);
+            this.DetallesCuadre.Location = new System.Drawing.Point(590, 172);
+            this.DetallesCuadre.Margin = new System.Windows.Forms.Padding(4);
+            this.DetallesCuadre.Name = "DetallesCuadre";
+            this.DetallesCuadre.Padding = new System.Windows.Forms.Padding(4);
+            this.DetallesCuadre.Size = new System.Drawing.Size(197, 242);
+            this.DetallesCuadre.TabIndex = 5;
+            this.DetallesCuadre.TabStop = false;
+            this.DetallesCuadre.Text = "Auditoría";
+            // 
+            // BalanceActualLabel
+            // 
+            this.BalanceActualLabel.Location = new System.Drawing.Point(19, 123);
+            this.BalanceActualLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BalanceActualLabel.Name = "BalanceActualLabel";
+            this.BalanceActualLabel.Size = new System.Drawing.Size(156, 29);
+            this.BalanceActualLabel.TabIndex = 2;
+            this.BalanceActualLabel.Text = "$0.00";
+            this.BalanceActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BalanceTitleLabel
+            // 
+            this.BalanceTitleLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BalanceTitleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BalanceTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BalanceTitleLabel.Location = new System.Drawing.Point(8, 78);
+            this.BalanceTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BalanceTitleLabel.Name = "BalanceTitleLabel";
+            this.BalanceTitleLabel.Size = new System.Drawing.Size(176, 91);
+            this.BalanceTitleLabel.TabIndex = 1;
+            this.BalanceTitleLabel.Text = "\r\nBalance de Caja:";
+            this.BalanceTitleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // CashInputButton
+            // 
+            this.CashInputButton.Location = new System.Drawing.Point(8, 21);
+            this.CashInputButton.Margin = new System.Windows.Forms.Padding(4);
+            this.CashInputButton.Name = "CashInputButton";
+            this.CashInputButton.Size = new System.Drawing.Size(176, 48);
+            this.CashInputButton.TabIndex = 0;
+            this.CashInputButton.Text = "Entrada Manual de Efectivo";
+            this.CashInputButton.UseVisualStyleBackColor = true;
+            this.CashInputButton.Click += new System.EventHandler(this.CashInputButton_Click);
+            // 
             // CajaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DetallesCuadre);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -159,6 +213,7 @@
             this.Load += new System.EventHandler(this.CajaMenuPrincipal_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.DetallesCuadre.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +231,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox DetallesCuadre;
+        private System.Windows.Forms.Label BalanceActualLabel;
+        private System.Windows.Forms.Label BalanceTitleLabel;
+        private System.Windows.Forms.Button CashInputButton;
     }
 }

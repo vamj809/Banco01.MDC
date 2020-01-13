@@ -9,6 +9,7 @@ using System;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
 using log4net;
+using System.Globalization;
 
 namespace Banco01.MDC
 {
@@ -23,6 +24,8 @@ namespace Banco01.MDC
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             if (currentUser != null) {
                 CurrentUser = currentUser;
+                if (currentUser.isAdmin == false)
+                    CashInputButton.Visible = false;
                 if (currentUser.Nombre.Length > 0)
                     WelcomeLabel.Text = $"Bienvenido/a {currentUser.Nombre}";
                 if (currentUser.Sucursal.Length > 0)
@@ -76,6 +79,18 @@ namespace Banco01.MDC
             OperacionesCLiente form_OpClientes = new OperacionesCLiente();
             this.Hide();
             form_OpClientes.Show();
+        }
+
+        private void CashInputButton_Click(object sender, EventArgs e)
+        {
+            Cuadre.CashInputForm inputForm = new Cuadre.CashInputForm();
+            if (inputForm.ShowDialog(this) == DialogResult.OK) {
+                //formato: $900,000,000,000,000.00
+                decimal valor = inputForm.Monto.Value;
+                decimal old_value = Decimal.Parse(BalanceActualLabel.Text, NumberStyles.Currency);
+                BalanceActualLabel.Text = (valor + old_value).ToString("C");
+                Logger.Info($"Han entrado {valor} a la caja.");
+            }
         }
     }
 }
