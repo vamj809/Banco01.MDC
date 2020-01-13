@@ -37,13 +37,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(24, 58);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(441, 20);
+            this.textBox1.Size = new System.Drawing.Size(426, 20);
             this.textBox1.TabIndex = 0;
             // 
             // label1
@@ -71,7 +73,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(24, 127);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(441, 20);
+            this.textBox2.Size = new System.Drawing.Size(426, 20);
             this.textBox2.TabIndex = 3;
             // 
             // label3
@@ -104,7 +106,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(512, 227);
+            this.button1.Location = new System.Drawing.Point(577, 333);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 63);
             this.button1.TabIndex = 7;
@@ -115,19 +117,38 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(309, 227);
+            this.button2.Location = new System.Drawing.Point(374, 333);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(175, 63);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Volver";
+            this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 244);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(255, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Si tiene alguna especificacion por favor digitela aqui:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(24, 275);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(289, 134);
+            this.textBox4.TabIndex = 10;
             // 
             // Deposito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 315);
+            this.ClientSize = new System.Drawing.Size(764, 421);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -156,5 +177,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
