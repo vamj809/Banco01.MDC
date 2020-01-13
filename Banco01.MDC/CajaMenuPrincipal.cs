@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
+using log4net;
 
 namespace Banco01.MDC
 {
     public partial class CajaMenuPrincipal : Form
     {
+        private static readonly ILog Logger = LogManager.GetLogger(System.Environment.MachineName);
         private ValidaCajero_Result CurrentUser;
         public CajaMenuPrincipal(ValidaCajero_Result currentUser = null)
         {
             InitializeComponent();
+            Logger.Info($"{currentUser.Usuario} acaba de iniciar sesión.");
             TimeOfDayLabel.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             if (currentUser != null) {
                 CurrentUser = currentUser;

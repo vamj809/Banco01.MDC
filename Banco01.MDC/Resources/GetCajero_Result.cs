@@ -19,5 +19,6 @@ namespace Banco01.MDC.Resources
         public string Correo { get; set; }
         public string Sucursal { get; set; }
         public int ID { get; set; }
+        public bool isAdmin { get; set; }
     }
 }

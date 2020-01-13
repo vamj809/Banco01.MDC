@@ -16,5 +16,6 @@ namespace Banco01.MDC.Resources
         public string Nombre { get; set; }
         public string Sucursal { get; set; }
         public string Usuario { get; set; }
+        public bool isAdmin { get; set; }
     }
 }
