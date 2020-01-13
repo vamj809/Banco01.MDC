@@ -34,7 +34,9 @@ namespace Banco01.MDC
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            ComprobacionCliente form_Comprobacion = new ComprobacionCliente();
+            this.Hide();
+            form_Comprobacion.Show();
         }
 
         private void OperacionesCLiente_Load(object sender, EventArgs e)
