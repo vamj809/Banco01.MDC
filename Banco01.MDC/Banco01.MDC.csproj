@@ -102,6 +102,20 @@
     <Compile Include="Cuadre\CentroCuadres.Designer.cs">
       <DependentUpon>CentroCuadres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cuadre\FinalDelDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cuadre\FinalDelDia.Designer.cs">
+      <DependentUpon>FinalDelDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MDC_LocalDBDataSet.cs">
+      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MDC_LocalDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Operaciones con el cliente\Deposito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +202,9 @@
     <EmbeddedResource Include="Cuadre\CentroCuadres.resx">
       <DependentUpon>CentroCuadres.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cuadre\FinalDelDia.resx">
+      <DependentUpon>FinalDelDia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +232,17 @@
     </Compile>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\MDC_LocalDBDataSet.xsc">
+      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\MDC_LocalDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MDC_LocalDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\MDC_LocalDBDataSet.xss">
+      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -253,11 +281,11 @@
     <Content Include="Resources\AppLogo.ico" />
     <Content Include="Resources\Key.ico" />
     <Content Include="Resources\MDC_LocalDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\MDC_LocalDB_log.ldf">
       <DependentUpon>MDC_LocalDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\MDC_LocalEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

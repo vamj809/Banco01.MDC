@@ -209,7 +209,17 @@ namespace Banco01.MDC
                 datos_cuadre.Monto_Fin = BalanceActual;
                 localDBEntity.SaveChanges();
                 Logger.Info($"Caja cerrada con {BalanceActual}.");
+                FinalDelDia formFin = new FinalDelDia();
+                this.Hide();
+                formFin.Show();
             }
+        }
+
+        private void buttonPrueba_Click(object sender, EventArgs e)
+        {
+            FinalDelDia formFin = new FinalDelDia();
+            this.Hide();
+            formFin.Show();
         }
     }
 }

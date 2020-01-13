@@ -31,11 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CajaMenuPrincipal));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.MyProfileLink = new System.Windows.Forms.ToolStripDropDownButton();
-            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.EditMyProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.LogOffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WelcomeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.TimeOfDayLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dummyLabel01 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,6 +43,12 @@
             this.buttonWithdraw = new System.Windows.Forms.Button();
             this.buttonDeposit = new System.Windows.Forms.Button();
             this.OperacionesGroupBox = new System.Windows.Forms.GroupBox();
+            this.MyProfileLink = new System.Windows.Forms.ToolStripDropDownButton();
+            this.newUserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newUserSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.EditMyProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogOffMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonPrueba = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.DetallesCuadre.SuspendLayout();
             this.OperacionesGroupBox.SuspendLayout();
@@ -68,47 +69,6 @@
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // MyProfileLink
-            // 
-            this.MyProfileLink.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newUserMenuItem,
-            this.newUserSeparator,
-            this.EditMyProfile,
-            this.LogOffMenuItem});
-            this.MyProfileLink.Image = ((System.Drawing.Image)(resources.GetObject("MyProfileLink.Image")));
-            this.MyProfileLink.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MyProfileLink.Name = "MyProfileLink";
-            this.MyProfileLink.Size = new System.Drawing.Size(84, 24);
-            this.MyProfileLink.Text = "Mi Perfil";
-            // 
-            // newUserMenuItem
-            // 
-            this.newUserMenuItem.Name = "newUserMenuItem";
-            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
-            this.newUserMenuItem.Visible = false;
-            this.newUserMenuItem.Click += new System.EventHandler(this.NewUserMenuItem_Click);
-            // 
-            // newUserSeparator
-            // 
-            this.newUserSeparator.Name = "newUserSeparator";
-            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
-            this.newUserSeparator.Visible = false;
-            // 
-            // EditMyProfile
-            // 
-            this.EditMyProfile.Name = "EditMyProfile";
-            this.EditMyProfile.Size = new System.Drawing.Size(183, 22);
-            this.EditMyProfile.Text = "Editar mi Perfil";
-            this.EditMyProfile.Click += new System.EventHandler(this.EditMyProfile_Click);
-            // 
-            // LogOffMenuItem
-            // 
-            this.LogOffMenuItem.Name = "LogOffMenuItem";
-            this.LogOffMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.LogOffMenuItem.Text = "Cerrar Sesión";
-            this.LogOffMenuItem.Click += new System.EventHandler(this.LogOffMenuItem_Click);
             // 
             // WelcomeLabel
             // 
@@ -230,11 +190,65 @@
             this.OperacionesGroupBox.TabStop = false;
             this.OperacionesGroupBox.Text = "Operaciones con el Cliente";
             // 
+            // MyProfileLink
+            // 
+            this.MyProfileLink.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newUserMenuItem,
+            this.newUserSeparator,
+            this.EditMyProfile,
+            this.LogOffMenuItem});
+            this.MyProfileLink.Image = ((System.Drawing.Image)(resources.GetObject("MyProfileLink.Image")));
+            this.MyProfileLink.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MyProfileLink.Name = "MyProfileLink";
+            this.MyProfileLink.Size = new System.Drawing.Size(84, 24);
+            this.MyProfileLink.Text = "Mi Perfil";
+            // 
+            // newUserMenuItem
+            // 
+            this.newUserMenuItem.Name = "newUserMenuItem";
+            this.newUserMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.newUserMenuItem.Text = "Crear Nuevo Usuario";
+            this.newUserMenuItem.Visible = false;
+            this.newUserMenuItem.Click += new System.EventHandler(this.NewUserMenuItem_Click);
+            // 
+            // newUserSeparator
+            // 
+            this.newUserSeparator.Name = "newUserSeparator";
+            this.newUserSeparator.Size = new System.Drawing.Size(180, 6);
+            this.newUserSeparator.Visible = false;
+            // 
+            // EditMyProfile
+            // 
+            this.EditMyProfile.Name = "EditMyProfile";
+            this.EditMyProfile.Size = new System.Drawing.Size(183, 22);
+            this.EditMyProfile.Text = "Editar mi Perfil";
+            this.EditMyProfile.Click += new System.EventHandler(this.EditMyProfile_Click);
+            // 
+            // LogOffMenuItem
+            // 
+            this.LogOffMenuItem.Name = "LogOffMenuItem";
+            this.LogOffMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.LogOffMenuItem.Text = "Cerrar Sesión";
+            this.LogOffMenuItem.Click += new System.EventHandler(this.LogOffMenuItem_Click);
+            // 
+            // buttonPrueba
+            // 
+            this.buttonPrueba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrueba.Location = new System.Drawing.Point(570, 224);
+            this.buttonPrueba.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPrueba.Name = "buttonPrueba";
+            this.buttonPrueba.Size = new System.Drawing.Size(27, 24);
+            this.buttonPrueba.TabIndex = 4;
+            this.buttonPrueba.Text = "?";
+            this.buttonPrueba.UseVisualStyleBackColor = true;
+            this.buttonPrueba.Click += new System.EventHandler(this.buttonPrueba_Click);
+            // 
             // CajaMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 319);
+            this.Controls.Add(this.buttonPrueba);
             this.Controls.Add(this.OperacionesGroupBox);
             this.Controls.Add(this.DetallesCuadre);
             this.Controls.Add(this.statusStrip1);
@@ -273,5 +287,6 @@
         private System.Windows.Forms.Button buttonWithdraw;
         private System.Windows.Forms.Button buttonDeposit;
         private System.Windows.Forms.GroupBox OperacionesGroupBox;
+        private System.Windows.Forms.Button buttonPrueba;
     }
 }
