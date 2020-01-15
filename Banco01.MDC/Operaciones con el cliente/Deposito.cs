@@ -59,7 +59,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     var deposito = new DepositoDatos()
                     {
                         Benefactor = nombre,
-                        Especificaciones = Convert.ToString(textBox4),
+                        Especificaciones = Convert.ToString(textBox4).Remove(0,36),
                         Monto = monto,
                         Fecha = DateTime.Now,
                         Nro_de_Cuenta = NumeroCuenta
@@ -99,7 +99,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     //OperacionesCliente form_OpClientes = new OperacionesCliente();
                     //this.Hide();
                     //form_OpClientes.Show();
-                    ReciboDeposito form_ReciboD = new ReciboDeposito();
+                    ReciboDeposito form_ReciboD = new ReciboDeposito(deposito.ID);
                     this.Hide();
                     form_ReciboD.Show();
 
