@@ -60,12 +60,17 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\..\FuerzaArmada1 Lab Pasado Copia\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,6 +112,17 @@
     </Compile>
     <Compile Include="Cuadre\FinalDelDia.Designer.cs">
       <DependentUpon>FinalDelDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetParaRecibos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetParaRecibos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReciboDeposito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReciboDeposito.Designer.cs">
+      <DependentUpon>ReciboDeposito.cs</DependentUpon>
     </Compile>
     <Compile Include="Operaciones con el cliente\Deposito.cs">
       <SubType>Form</SubType>
@@ -225,6 +241,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReciboDep.rdlc" />
+    <EmbeddedResource Include="ReciboDeposito.resx">
+      <DependentUpon>ReciboDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSetParaRecibos.xsc">
+      <DependentUpon>DataSetParaRecibos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetParaRecibos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetParaRecibos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetParaRecibos.xss">
+      <DependentUpon>DataSetParaRecibos.xsd</DependentUpon>
+    </None>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -265,12 +296,9 @@
   <ItemGroup>
     <Content Include="Resources\AppLogo.ico" />
     <Content Include="Resources\Key.ico" />
-    <Content Include="Resources\MDC_LocalDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Resources\MDC_LocalDB.mdf" />
     <Content Include="Resources\MDC_LocalDB_log.ldf">
       <DependentUpon>MDC_LocalDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\MDC_LocalEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

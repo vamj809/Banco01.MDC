@@ -99,9 +99,13 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     //OperacionesCliente form_OpClientes = new OperacionesCliente();
                     //this.Hide();
                     //form_OpClientes.Show();
-                    CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
+                    ReciboDeposito form_ReciboD = new ReciboDeposito();
                     this.Hide();
-                    form_MainMenu.Show();
+                    form_ReciboD.Show();
+
+                    //CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
+                    //this.Hide();
+                    //form_MainMenu.Show();
                 }
 
                 
