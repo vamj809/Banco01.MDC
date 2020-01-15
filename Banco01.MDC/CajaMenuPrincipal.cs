@@ -218,9 +218,9 @@ namespace Banco01.MDC
 
         private void buttonPrueba_Click(object sender, EventArgs e)
         {
-            FinalDelDia formFin = new FinalDelDia();
+            CentroCuadres formCuadre = new CentroCuadres(CurrentUser);
             this.Hide();
-            formFin.Show();
+            formCuadre.ShowDialog();
         }
     }
 }

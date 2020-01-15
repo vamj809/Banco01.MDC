@@ -120,14 +120,11 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="WorldTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>154, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="MyProfileLink.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAoFSURBVHhe7Z3Ji11FFIfbETWOEAXjgCiIuJCAmOhGBBFn
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAoFSURBVHhe7Z3Ji11FFIfbETWOEAXjgCiIuJCAmOhGBBFn
         /AsUBBUcMBCIRHTlgPO0kYi7hDihiAtFIhpUXChBFBwXugi6UJziSJx/3+10k9d9+vW771bdOlW3fvBB
         0+++qlPndL93b9WpUzOF6gRxkbhe3C+eFW+ID8VX4gfxm/hrD/zM73iNa7iW9/Be2qAt2qxyqKPFFeIB
         8aYgkP9Fgrbpg77ok76retZ+4lxxj/hA/CusYPUBfWMDtmATtlVF0L7iPPG4+EZYwfAAtmEjtmJzVUet
@@ -173,6 +170,9 @@
         76UN2irwNJOZmf8B2ySsgWpIHjMAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="WorldTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>45</value>
   </metadata>

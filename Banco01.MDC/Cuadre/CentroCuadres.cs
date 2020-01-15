@@ -19,6 +19,7 @@ namespace Banco01.MDC.Cuadre
     {
         private static readonly ILog Logger = LogManager.GetLogger(System.Environment.MachineName);
         private readonly ValidaCajero_Result CurrentUser;
+        MDC_LocalDBEntities localDBEntity;
         public CentroCuadres(ValidaCajero_Result _currentUser = null)
         {
             if (_currentUser == null) {
@@ -28,16 +29,27 @@ namespace Banco01.MDC.Cuadre
             InitializeComponent();
         }
 
+        private void updateFilters()
+        {
+            var filteredData = localDBEntity.DetallesCuadre.Local.ToBindingList()
+                .Where(x => (
+                    x.Hora.Date.CompareTo(Fecha_Inicio.Value.Date) >= 0 && 
+                    x.Hora.Date.CompareTo(Fecha_Fin.Value.Date) <= 0)
+                );
+            this.detallesCuadreBindingSource.DataSource = filteredData.Count() > 0 ?
+                filteredData : filteredData.ToArray();
+        }
+
         private void CentroCuadres_Load(object sender, EventArgs e)
         {
-            MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities();
+            localDBEntity = new MDC_LocalDBEntities();
             localDBEntity.DetallesCuadre.Load();
             this.detallesCuadreBindingSource.DataSource = localDBEntity.DetallesCuadre.Local.ToBindingList();
-            dataGridView1.Sort(dataGridView1.Columns["Hora"], ListSortDirection.Ascending);
-            
+            dataGridView1.Sort(dataGridView1.Columns[1], ListSortDirection.Ascending); //Columna 1 = Fecha/Hora
+
             //Toma todas las fechas, y busca la más antigua y la más reciente.
             var dateTimes = dataGridView1.Rows.Cast<DataGridViewRow>()
-                            .Select(x => (DateTime) x.Cells["Hora"].Value);
+                            .Select(x => (DateTime) x.Cells[1].Value); //Columna 1 = Fecha_Hora
             var minValue = dateTimes.Min();
             var maxValue = dateTimes.Max();
 
@@ -45,7 +57,9 @@ namespace Banco01.MDC.Cuadre
             Fecha_Inicio.MinDate = minValue;
             Fecha_Inicio.MaxDate = maxValue;
 
-            Fecha_Fin = Fecha_Inicio;
+            Fecha_Fin.Value = maxValue;
+            Fecha_Fin.MinDate = minValue;
+            Fecha_Fin.MaxDate = maxValue;
             //// Manejo de Fechas ^^^
         }
 
@@ -56,9 +70,38 @@ namespace Banco01.MDC.Cuadre
             mm.Show();
         }
 
-        private void Fechas_ValueChanged(object sender, EventArgs e)
+        private void OnlyTodayCheck_CheckedChanged(object sender, EventArgs e)
         {
+            if (OnlyTodayCheck.Checked) {
+                Fecha_Inicio.Enabled = false;
+                Fecha_Fin.Enabled = false;
+                var filteredData = localDBEntity.DetallesCuadre.Local.ToBindingList()
+                .Where(x => x.Hora.Date.CompareTo(DateTime.Now.Date) == 0);
+                this.detallesCuadreBindingSource.DataSource = filteredData.Count() > 0 ?
+                    filteredData : filteredData.ToArray();
+            } else {
+                Fecha_Inicio.Enabled = true;
+                Fecha_Fin.Enabled = true;
+                updateFilters();
+            }
+        }
 
+        private void Fecha_Inicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (Fecha_Inicio.Value > Fecha_Fin.Value) {
+                MessageBox.Show("La fecha de inicio debe ser menor o igual a la final.");
+                Fecha_Inicio.Value = Fecha_Fin.Value;
+            }
+            updateFilters();
+        }
+
+        private void Fecha_Fin_ValueChanged(object sender, EventArgs e)
+        {
+            if (Fecha_Fin.Value > Fecha_Fin.Value) {
+                MessageBox.Show("La fecha fin debe ser mayor o igual a la de inicio.");
+                Fecha_Fin.Value = Fecha_Inicio.Value;
+            }
+            updateFilters();
         }
     }
 }
