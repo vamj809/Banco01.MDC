@@ -27,82 +27,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DetallesCuadre = new System.Windows.Forms.GroupBox();
-            this.BalanceActualLabel = new System.Windows.Forms.Label();
-            this.BalanceTitleLabel = new System.Windows.Forms.Label();
-            this.CashInputButton = new System.Windows.Forms.Button();
-            this.DetallesCuadre.SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.detallesCuadreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detallesCuadreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // DetallesCuadre
+            // dateTimePicker1
             // 
-            this.DetallesCuadre.Controls.Add(this.BalanceActualLabel);
-            this.DetallesCuadre.Controls.Add(this.BalanceTitleLabel);
-            this.DetallesCuadre.Controls.Add(this.CashInputButton);
-            this.DetallesCuadre.Location = new System.Drawing.Point(305, 89);
-            this.DetallesCuadre.Margin = new System.Windows.Forms.Padding(4);
-            this.DetallesCuadre.Name = "DetallesCuadre";
-            this.DetallesCuadre.Padding = new System.Windows.Forms.Padding(4);
-            this.DetallesCuadre.Size = new System.Drawing.Size(282, 264);
-            this.DetallesCuadre.TabIndex = 0;
-            this.DetallesCuadre.TabStop = false;
-            this.DetallesCuadre.Text = "Auditoría";
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 12);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(343, 26);
+            this.dateTimePicker1.TabIndex = 0;
             // 
-            // BalanceActualLabel
+            // dateTimePicker2
             // 
-            this.BalanceActualLabel.Location = new System.Drawing.Point(19, 145);
-            this.BalanceActualLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BalanceActualLabel.Name = "BalanceActualLabel";
-            this.BalanceActualLabel.Size = new System.Drawing.Size(246, 29);
-            this.BalanceActualLabel.TabIndex = 2;
-            this.BalanceActualLabel.Text = "$0.00";
-            this.BalanceActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dateTimePicker2.Location = new System.Drawing.Point(548, 12);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(343, 26);
+            this.dateTimePicker2.TabIndex = 1;
             // 
-            // BalanceTitleLabel
+            // dataGridView1
             // 
-            this.BalanceTitleLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BalanceTitleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BalanceTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BalanceTitleLabel.Location = new System.Drawing.Point(8, 89);
-            this.BalanceTitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.BalanceTitleLabel.Name = "BalanceTitleLabel";
-            this.BalanceTitleLabel.Size = new System.Drawing.Size(268, 114);
-            this.BalanceTitleLabel.TabIndex = 1;
-            this.BalanceTitleLabel.Text = "\r\nBalance de Caja:";
-            this.BalanceTitleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nombreDataGridViewTextBoxColumn,
+            this.fechaDataGridViewTextBoxColumn,
+            this.tipoDataGridViewTextBoxColumn,
+            this.montoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.detallesCuadreBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 44);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(879, 339);
+            this.dataGridView1.TabIndex = 2;
             // 
-            // CashInputButton
+            // detallesCuadreBindingSource
             // 
-            this.CashInputButton.Location = new System.Drawing.Point(8, 26);
-            this.CashInputButton.Margin = new System.Windows.Forms.Padding(4);
-            this.CashInputButton.Name = "CashInputButton";
-            this.CashInputButton.Size = new System.Drawing.Size(268, 48);
-            this.CashInputButton.TabIndex = 0;
-            this.CashInputButton.Text = "Entrada Manual de Efectivo";
-            this.CashInputButton.UseVisualStyleBackColor = true;
-            this.CashInputButton.Click += new System.EventHandler(this.CashInputButton_Click);
+            this.detallesCuadreBindingSource.DataSource = typeof(Banco01.MDC.Resources.DetallesCuadre);
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nombreDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // fechaDataGridViewTextBoxColumn
+            // 
+            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+            this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fechaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tipoDataGridViewTextBoxColumn
+            // 
+            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo";
+            this.tipoDataGridViewTextBoxColumn.HeaderText = "Tipo";
+            this.tipoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
+            this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tipoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // montoDataGridViewTextBoxColumn
+            // 
+            this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
+            this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
+            this.montoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
+            this.montoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.montoDataGridViewTextBoxColumn.Width = 125;
             // 
             // CentroCuadres
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 378);
-            this.Controls.Add(this.DetallesCuadre);
+            this.ClientSize = new System.Drawing.Size(903, 395);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CentroCuadres";
             this.Text = "CentroCuadres";
             this.Load += new System.EventHandler(this.CentroCuadres_Load);
-            this.DetallesCuadre.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detallesCuadreBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox DetallesCuadre;
-        private System.Windows.Forms.Label BalanceActualLabel;
-        private System.Windows.Forms.Label BalanceTitleLabel;
-        private System.Windows.Forms.Button CashInputButton;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource detallesCuadreBindingSource;
     }
 }

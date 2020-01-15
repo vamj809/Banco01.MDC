@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
 using Banco01.MDC.Cajero;
+using System.Data.Entity;
 
 namespace Banco01.MDC.Cuadre
 {
@@ -21,9 +22,11 @@ namespace Banco01.MDC.Cuadre
         {
             // TODO: This line of code loads data into the 'mDC_LocalDBDataSet.HistorialTransacciones' table. You can move, or remove it, as needed.
             //dataGridView1.DataSource = new MDC_LocalDBEntities().HistorialTransacciones;
-            this.historialTransaccionesTableAdapter.Fill(this.mDC_LocalDBDataSet.HistorialTransacciones);
+            //this.historialTransaccionesTableAdapter.Fill(this.mDC_LocalDBDataSet.HistorialTransacciones);
             int DateID = -1;
             using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
+                localDBEntity.DetallesCuadre.Load();
+                this.detallesCuadreBindingSource.DataSource = localDBEntity.DetallesCuadre.Local.ToBindingList();
                 foreach (var data in localDBEntity.CuadreDiario) {
                     if (data.Fecha.Date == DateTime.Now.Date) {
                         DateID = data.ID;
