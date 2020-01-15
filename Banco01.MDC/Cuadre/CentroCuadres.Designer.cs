@@ -71,7 +71,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(879, 339);
+            this.dataGridView1.Size = new System.Drawing.Size(879, 304);
             this.dataGridView1.TabIndex = 2;
             // 
             // detallesCuadreBindingSource
@@ -80,39 +80,39 @@
             // 
             // nombreDataGridViewTextBoxColumn
             // 
+            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Cajero que le atendió";
             this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
             this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 125;
             // 
             // fechaDataGridViewTextBoxColumn
             // 
+            this.fechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
             this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
             this.fechaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
             this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fechaDataGridViewTextBoxColumn.Width = 125;
             // 
             // tipoDataGridViewTextBoxColumn
             // 
+            this.tipoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.tipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo";
             this.tipoDataGridViewTextBoxColumn.HeaderText = "Tipo";
             this.tipoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
             this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipoDataGridViewTextBoxColumn.Width = 125;
             // 
             // montoDataGridViewTextBoxColumn
             // 
+            this.montoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
             this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
             this.montoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
             this.montoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.montoDataGridViewTextBoxColumn.Width = 125;
             // 
             // CentroCuadres
             // 
@@ -138,10 +138,10 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource detallesCuadreBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource detallesCuadreBindingSource;
     }
 }

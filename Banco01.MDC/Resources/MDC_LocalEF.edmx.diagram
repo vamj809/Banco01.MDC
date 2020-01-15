@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="MDC_LocalDBModel.CuadreDiario" Width="1.5" PointX="7" PointY="1.125" />
         <EntityTypeShape EntityType="MDC_LocalDBModel.DepositoDatos" Width="1.5" PointX="2.25" PointY="4" />
         <EntityTypeShape EntityType="MDC_LocalDBModel.HistorialTransacciones" Width="1.5" PointX="4" PointY="1.25" />
-        <EntityTypeShape EntityType="MDC_LocalDBModel.DetallesCuadre" Width="1.5" PointX="5.375" PointY="4" />
+        <EntityTypeShape EntityType="MDC_LocalDBModel.DetallesCuadre" Width="1.5" PointX="5.375" PointY="4" IsExpanded="true" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

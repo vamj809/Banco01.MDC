@@ -19,5 +19,6 @@ namespace Banco01.MDC.Resources
         public int IDCuadre { get; set; }
         public string Tipo { get; set; }
         public decimal Monto { get; set; }
+        public System.DateTime Fecha_Hora { get; set; }
     }
 }

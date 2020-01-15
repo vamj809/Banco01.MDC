@@ -34,7 +34,7 @@
           <Property Name="Benefactor" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Nro_de_Cuenta" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Especificaciones" Type="nvarchar" MaxLength="500" />
-          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="HistorialTransacciones">
@@ -44,6 +44,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDCajero" Type="int" Nullable="false" />
           <Property Name="IDCuadre" Type="int" Nullable="false" />
+          <Property Name="Fecha_Hora" Type="datetime" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
         </EntityType>
@@ -51,11 +52,13 @@
 warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.MDC\RESOURCES\MDC_LOCALDB.MDF.dbo.DetallesCuadre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DetallesCuadre">
           <Key>
+            <PropertyRef Name="Hora" />
             <PropertyRef Name="Tipo" />
             <PropertyRef Name="Monto" />
           </Key>
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
           <Property Name="Fecha" Type="datetime" />
+          <Property Name="Hora" Type="datetime" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
         </EntityType>
@@ -76,6 +79,7 @@ warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.
             <DefiningQuery>SELECT 
     [DetallesCuadre].[Nombre] AS [Nombre], 
     [DetallesCuadre].[Fecha] AS [Fecha], 
+    [DetallesCuadre].[Hora] AS [Hora], 
     [DetallesCuadre].[Tipo] AS [Tipo], 
     [DetallesCuadre].[Monto] AS [Monto]
     FROM [dbo].[DetallesCuadre] AS [DetallesCuadre]</DefiningQuery>
@@ -142,7 +146,7 @@ warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.
           </Key>
           <Property Name="Benefactor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Especificaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nro_de_Cuenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -156,16 +160,19 @@ warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.
           <Property Name="IDCuadre" Type="Int32" Nullable="false" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Monto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Fecha_Hora" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="DetallesCuadre">
           <Key>
             <PropertyRef Name="Tipo" />
             <PropertyRef Name="Monto" />
+            <PropertyRef Name="Hora" />
           </Key>
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Monto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Hora" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -235,6 +242,7 @@ warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.
           <EntitySetMapping Name="HistorialTransacciones">
             <EntityTypeMapping TypeName="MDC_LocalDBModel.HistorialTransacciones">
               <MappingFragment StoreEntitySet="HistorialTransacciones">
+                <ScalarProperty Name="Fecha_Hora" ColumnName="Fecha_Hora" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="IDCuadre" ColumnName="IDCuadre" />
@@ -246,6 +254,7 @@ warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.
           <EntitySetMapping Name="DetallesCuadre">
             <EntityTypeMapping TypeName="MDC_LocalDBModel.DetallesCuadre">
               <MappingFragment StoreEntitySet="DetallesCuadre">
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />

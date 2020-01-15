@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net;
 using Banco01.MDC.Resources;
+using System.Data.Entity;
 
 namespace Banco01.MDC.Cuadre
 {
@@ -23,7 +24,9 @@ namespace Banco01.MDC.Cuadre
 
         private void CentroCuadres_Load(object sender, EventArgs e)
         {
-
+            MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities();
+            localDBEntity.DetallesCuadre.Load();
+            this.detallesCuadreBindingSource.DataSource = localDBEntity.DetallesCuadre.Local.ToBindingList();
         }
     }
 }

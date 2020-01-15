@@ -18,5 +18,6 @@ namespace Banco01.MDC.Resources
         public Nullable<System.DateTime> Fecha { get; set; }
         public string Tipo { get; set; }
         public decimal Monto { get; set; }
+        public System.DateTime Hora { get; set; }
     }
 }

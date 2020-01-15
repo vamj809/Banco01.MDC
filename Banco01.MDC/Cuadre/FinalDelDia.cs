@@ -20,9 +20,6 @@ namespace Banco01.MDC.Cuadre
 
         private void FinalDelDia_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'mDC_LocalDBDataSet.HistorialTransacciones' table. You can move, or remove it, as needed.
-            //dataGridView1.DataSource = new MDC_LocalDBEntities().HistorialTransacciones;
-            //this.historialTransaccionesTableAdapter.Fill(this.mDC_LocalDBDataSet.HistorialTransacciones);
             int DateID = -1;
             using (MDC_LocalDBEntities localDBEntity = new MDC_LocalDBEntities()) {
                 localDBEntity.DetallesCuadre.Load();

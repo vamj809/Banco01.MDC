@@ -16,7 +16,7 @@ namespace Banco01.MDC.Resources
     {
         public string Benefactor { get; set; }
         public string Especificaciones { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
+        public System.DateTime Fecha { get; set; }
         public Nullable<decimal> Monto { get; set; }
         public int ID { get; set; }
         public string Nro_de_Cuenta { get; set; }
