@@ -108,14 +108,6 @@
     <Compile Include="Cuadre\FinalDelDia.Designer.cs">
       <DependentUpon>FinalDelDia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources\MDC_LocalDBDataSet.cs">
-      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\MDC_LocalDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Operaciones con el cliente\Deposito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +153,9 @@
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\DepositoDatos.cs">
+      <DependentUpon>MDC_LocalEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\DetallesCuadre.cs">
       <DependentUpon>MDC_LocalEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\GetCajero_Result.cs">
@@ -232,17 +227,6 @@
     </Compile>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\MDC_LocalDBDataSet.xsc">
-      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Resources\MDC_LocalDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MDC_LocalDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\MDC_LocalDBDataSet.xss">
-      <DependentUpon>MDC_LocalDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -47,6 +47,18 @@
           <Property Name="Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="Monto" Type="money" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\VAMJ809\SOURCE\REPOS\BANCO01.MDC\BANCO01.MDC\RESOURCES\MDC_LOCALDB.MDF.dbo.DetallesCuadre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DetallesCuadre">
+          <Key>
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Monto" />
+          </Key>
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+        </EntityType>
         <Function Name="GetCajero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="usuario" Type="nvarchar" Mode="In" />
         </Function>
@@ -60,6 +72,14 @@
           <EntitySet Name="CuadreDiario" EntityType="Self.CuadreDiario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepositoDatos" EntityType="Self.DepositoDatos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorialTransacciones" EntityType="Self.HistorialTransacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallesCuadre" EntityType="Self.DetallesCuadre" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DetallesCuadre].[Nombre] AS [Nombre], 
+    [DetallesCuadre].[Fecha] AS [Fecha], 
+    [DetallesCuadre].[Tipo] AS [Tipo], 
+    [DetallesCuadre].[Monto] AS [Monto]
+    FROM [dbo].[DetallesCuadre] AS [DetallesCuadre]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -90,6 +110,7 @@
           <EntitySet Name="CuadreDiario" EntityType="MDC_LocalDBModel.CuadreDiario" />
           <EntitySet Name="DepositoDatos" EntityType="MDC_LocalDBModel.DepositoDatos" />
           <EntitySet Name="HistorialTransacciones" EntityType="MDC_LocalDBModel.HistorialTransacciones" />
+          <EntitySet Name="DetallesCuadre" EntityType="MDC_LocalDBModel.DetallesCuadre" />
           </EntityContainer>
         <ComplexType Name="ValidaCajero_Result">
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
@@ -133,6 +154,16 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDCajero" Type="Int32" Nullable="false" />
           <Property Name="IDCuadre" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Monto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="DetallesCuadre">
+          <Key>
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Monto" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Monto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
@@ -209,6 +240,16 @@
                 <ScalarProperty Name="IDCuadre" ColumnName="IDCuadre" />
                 <ScalarProperty Name="IDCajero" ColumnName="IDCajero" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesCuadre">
+            <EntityTypeMapping TypeName="MDC_LocalDBModel.DetallesCuadre">
+              <MappingFragment StoreEntitySet="DetallesCuadre">
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
