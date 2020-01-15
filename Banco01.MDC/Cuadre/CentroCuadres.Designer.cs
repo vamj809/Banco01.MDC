@@ -41,8 +41,6 @@
             this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detallesCuadreBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detallesCuadreBindingSource)).BeginInit();
@@ -88,13 +86,11 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(973, 333);
+            this.dataGridView1.Size = new System.Drawing.Size(813, 333);
             this.dataGridView1.TabIndex = 2;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.OnlyTodayCheck);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -103,7 +99,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(973, 62);
+            this.panel1.Size = new System.Drawing.Size(813, 62);
             this.panel1.TabIndex = 3;
             // 
             // label1
@@ -127,7 +123,7 @@
             // OnlyTodayCheck
             // 
             this.OnlyTodayCheck.AutoSize = true;
-            this.OnlyTodayCheck.Location = new System.Drawing.Point(798, 22);
+            this.OnlyTodayCheck.Location = new System.Drawing.Point(638, 22);
             this.OnlyTodayCheck.Name = "OnlyTodayCheck";
             this.OnlyTodayCheck.Size = new System.Drawing.Size(163, 24);
             this.OnlyTodayCheck.TabIndex = 4;
@@ -178,28 +174,11 @@
             // 
             this.detallesCuadreBindingSource.DataSource = typeof(Banco01.MDC.Resources.DetallesCuadre);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(605, 20);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 28);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(553, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Tipo:";
-            // 
             // CentroCuadres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 395);
+            this.ClientSize = new System.Drawing.Size(813, 395);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,7 +209,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn horaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

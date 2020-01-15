@@ -219,7 +219,6 @@ namespace Banco01.MDC
         private void buttonPrueba_Click(object sender, EventArgs e)
         {
             CentroCuadres formCuadre = new CentroCuadres(CurrentUser);
-            this.Hide();
             formCuadre.ShowDialog();
         }
     }

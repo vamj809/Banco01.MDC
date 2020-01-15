@@ -65,9 +65,9 @@ namespace Banco01.MDC.Cuadre
 
         private void CentroCuadres_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CajaMenuPrincipal mm = new CajaMenuPrincipal(CurrentUser);
-            this.Hide();
-            mm.Show();
+            //CajaMenuPrincipal mm = new CajaMenuPrincipal(CurrentUser);
+            //this.Hide();
+            //mm.Show();
         }
 
         private void OnlyTodayCheck_CheckedChanged(object sender, EventArgs e)
