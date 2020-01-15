@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
 using Banco01.MDC.Cajero;
+using System.Data.SqlClient;
 
 namespace Banco01.MDC.Operaciones_con_el_cliente
 {
@@ -43,7 +44,29 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
-            //label7.Text = BalanceCaja.ToString("C");
+            string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
+            try
+            {
+                SqlConnection prueba = new SqlConnection();
+                prueba.ConnectionString = con;
+
+                prueba.Open();
+
+                label6.ForeColor = Color.Green;
+                label6.Text = "Conectado";
+
+                prueba.Close();
+
+
+            }
+
+            catch (Exception ConnectionError)
+            {
+                MessageBox.Show(ConnectionError.Message);
+                label6.ForeColor = Color.Red;
+                label6.Text = "No conectado";
+            }
+
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -128,7 +151,16 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     }
                     //**** Sección de Cuadre ****//
 
-                    MessageBox.Show("Retiro realizado con exito");
+
+                    if (label6.Text == "Conectado") {
+                        MessageBox.Show("Retiro realizado con exito");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Retiro fuera de linea realizado con exito");
+                    }
+
                     //OperacionesCliente form_OpClientes = new OperacionesCliente();
                     //this.Hide();
                     //form_OpClientes.Show();
@@ -145,6 +177,16 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label7_Click_1(object sender, EventArgs e)
         {
 
         }
