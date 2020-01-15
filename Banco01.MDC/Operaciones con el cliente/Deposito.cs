@@ -61,6 +61,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         Benefactor = nombre,
                         Especificaciones = Convert.ToString(textBox4),
                         Monto = monto,
+                        Fecha = DateTime.Now,
                         Nro_de_Cuenta = NumeroCuenta
                     };
 
@@ -81,6 +82,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         var transaccion = new HistorialTransacciones() {
                             IDCajero = id_cajero,
                             IDCuadre = id_cuadre,
+                            Fecha_Hora = DateTime.Now,
                             Tipo = "Deposito",
                             Monto = monto,
                         };

@@ -162,6 +162,7 @@ namespace Banco01.MDC
                     var entrada = new HistorialTransacciones() {
                         IDCajero = id_cajero,
                         IDCuadre = id_cuadre,
+                        Fecha_Hora = DateTime.Now,
                         Tipo = "Entrada",
                         Monto = montoAgregado //M: Tipo Decimal
                     };

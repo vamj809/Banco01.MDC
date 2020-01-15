@@ -108,6 +108,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                             var entrada = new HistorialTransacciones() {
                                 IDCajero = id_cajero,
                                 IDCuadre = id_cuadre,
+                                Fecha_Hora = DateTime.Now,
                                 Tipo = "Entrada",
                                 Monto = textBox1.Value * 1.5M //M: Tipo Decimal
                             };
@@ -118,6 +119,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         var transaccion = new HistorialTransacciones() {
                             IDCajero = id_cajero,
                             IDCuadre = id_cuadre,
+                            Fecha_Hora = DateTime.Now,
                             Tipo = "Retiro",
                             Monto = -textBox1.Value
                         };
