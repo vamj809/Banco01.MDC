@@ -60,7 +60,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     var deposito = new DepositoDatos()
                     {
                         Benefactor = nombre,
-                        Especificaciones = Convert.ToString(textBox4).Remove(0,36),
+                        Especificaciones = Convert.ToString(textBox4).Remove(0, 36),
                         Monto = monto,
                         Fecha = DateTime.Now,
                         Nro_de_Cuenta = NumeroCuenta
@@ -91,11 +91,38 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     }
                     //**** Sección de Cuadre ****//
 
-                    context.DepositoDatos.Add(deposito);
+                   
+
+                    
+                    if (label7.Text == "Conectado")
+                    {
+                        string conn = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
+                        SqlConnection prueba = new SqlConnection();
+                        prueba.ConnectionString = conn; 
+
+                        prueba.Open();
+
+                        SqlCommand insertCommand = new SqlCommand("INSERT INTO tblMoviminetos (Fecha, id_transaccion, Monto, Tipo_transaccion) VALUES (@0, @1, @2, @3)", prueba);
+                        insertCommand.Parameters.Add(new SqlParameter("0", deposito.Fecha));
+                        insertCommand.Parameters.Add(new SqlParameter("1", deposito.ID));
+                        insertCommand.Parameters.Add(new SqlParameter("2", deposito.Monto));
+                        insertCommand.Parameters.Add(new SqlParameter("3", "Deposito"));
+
+                        insertCommand.ExecuteNonQuery();
+
+                        prueba.Close();
+                        MessageBox.Show("Deposito realizado con exito");
+
+                    }
+                    else
+                    {
+                        context.DepositoDatos.Add(deposito);
+
+
+                    }
+
                     context.SaveChanges();
                     Logger.Info($"Han sido depositados {monto.ToString("C")} a la caja.");
-                    MessageBox.Show("Deposito realizado con exito");
-
 
                     //OperacionesCliente form_OpClientes = new OperacionesCliente();
                     //this.Hide();
