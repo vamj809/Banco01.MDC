@@ -89,11 +89,37 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         };
                         context.HistorialTransacciones.Add(transaccion);
                     }
+                    Logger.Info($"Han sido depositados {monto.ToString("C")} a la caja.");
+
                     //**** Sección de Cuadre ****//
 
-                    context.DepositoDatos.Add(deposito);
+
+                    if (label7.Text == "Conectado")
+                    {
+                        string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
+                      
+                        SqlConnection prueba = new SqlConnection();
+                        prueba.ConnectionString = con;
+
+                        prueba.Open();
+                        SqlCommand insertCommand = new SqlCommand("INSERT INTO tblMoviminetos (Fecha, id_transaccion, Monto, Tipo_transaccion) VALUES (@0, @1, @2, @3)", prueba);
+                        insertCommand.Parameters.Add(new SqlParameter("0", deposito.Fecha));
+                        insertCommand.Parameters.Add(new SqlParameter("1", deposito.ID));
+                        insertCommand.Parameters.Add(new SqlParameter("2", deposito.Monto));
+                        insertCommand.Parameters.Add(new SqlParameter("3", "Deposito"));
+
+                        insertCommand.ExecuteNonQuery();
+                        prueba.Close();
+                    
+                    }
+
+                    else
+                    {
+                        context.DepositoDatos.Add(deposito);
+                    }
+                    
                     context.SaveChanges();
-                    Logger.Info($"Han sido depositados {monto.ToString("C")} a la caja.");
+                    
                     MessageBox.Show("Deposito realizado con exito");
 
 

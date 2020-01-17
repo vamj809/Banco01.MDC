@@ -29,22 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.DepositoDatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DataSetParaRecibos = new Banco01.MDC.DataSetParaRecibos();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.DepositoDatosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSetParaRecibos = new Banco01.MDC.DataSetParaRecibos();
             this.DepositoDatosTableAdapter = new Banco01.MDC.DataSetParaRecibosTableAdapters.DepositoDatosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DepositoDatosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetParaRecibos)).BeginInit();
             this.SuspendLayout();
             // 
+            // DepositoDatosBindingSource
+            // 
+            this.DepositoDatosBindingSource.DataMember = "DepositoDatos";
+            this.DepositoDatosBindingSource.DataSource = this.DataSetParaRecibos;
+            // 
+            // DataSetParaRecibos
+            // 
+            this.DataSetParaRecibos.DataSetName = "DataSetParaRecibos";
+            this.DataSetParaRecibos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "DatosDeDeposito";
-            reportDataSource1.Value = this.DepositoDatosBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource3.Name = "DatosDeDeposito";
+            reportDataSource3.Value = this.DepositoDatosBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Banco01.MDC.ReciboDep.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(1, 0);
             this.reportViewer1.Name = "reportViewer1";
@@ -73,16 +83,6 @@
             this.label1.Visible = false;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // DepositoDatosBindingSource
-            // 
-            this.DepositoDatosBindingSource.DataMember = "DepositoDatos";
-            this.DepositoDatosBindingSource.DataSource = this.DataSetParaRecibos;
-            // 
-            // DataSetParaRecibos
-            // 
-            this.DataSetParaRecibos.DataSetName = "DataSetParaRecibos";
-            this.DataSetParaRecibos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // DepositoDatosTableAdapter
             // 
             this.DepositoDatosTableAdapter.ClearBeforeFill = true;
@@ -96,7 +96,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.reportViewer1);
             this.Name = "ReciboDeposito";
-            this.Text = "Form1";
+            this.Text = "Recibo";
             this.Load += new System.EventHandler(this.ReciboDeposito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DepositoDatosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetParaRecibos)).EndInit();
