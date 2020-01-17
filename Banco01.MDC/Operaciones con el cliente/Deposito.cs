@@ -102,37 +102,47 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         prueba.ConnectionString = con;
 
                         prueba.Open();
-                        SqlCommand insertCommand = new SqlCommand("INSERT INTO tblMoviminetos (Fecha, id_transaccion, Monto, Tipo_transaccion) VALUES (@0, @1, @2, @3)", prueba);
-                        insertCommand.Parameters.Add(new SqlParameter("0", deposito.Fecha));
-                        insertCommand.Parameters.Add(new SqlParameter("1", deposito.ID));
-                        insertCommand.Parameters.Add(new SqlParameter("2", deposito.Monto));
-                        insertCommand.Parameters.Add(new SqlParameter("3", "Deposito"));
 
-                        insertCommand.ExecuteNonQuery();
-                        prueba.Close();
-                    
+
+                        SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [tblCuenta] WHERE (id_cuenta = @user)", prueba);
+                        check_User_Name.Parameters.AddWithValue("@user", textBox2.Text);
+                        int UserExist = (int)check_User_Name.ExecuteScalar();
+
+                        if (UserExist > 0)
+                        {
+                            SqlCommand insertCommand = new SqlCommand("INSERT INTO tblMoviminetos (Fecha, id_transaccion, Monto, Tipo_transaccion) VALUES (@0, @1, @2, @3)", prueba);
+                            insertCommand.Parameters.Add(new SqlParameter("0", deposito.Fecha));
+                            insertCommand.Parameters.Add(new SqlParameter("1", deposito.ID));
+                            insertCommand.Parameters.Add(new SqlParameter("2", deposito.Monto));
+                            insertCommand.Parameters.Add(new SqlParameter("3", "Deposito"));
+
+                            insertCommand.ExecuteNonQuery();
+                            prueba.Close();
+
+                            MessageBox.Show("Deposito realizado con exito");
+                            ReciboDeposito form_ReciboDConectado = new ReciboDeposito(deposito.ID);
+                            this.Hide();
+                            form_ReciboDConectado.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El numero de cuenta no existe, por favor inserte un numero de cuenta valido");
+                        }
+
                     }
 
                     else
                     {
                         context.DepositoDatos.Add(deposito);
+                        MessageBox.Show("Deposito fuera de linea realizado con exito");
+                        ReciboDeposito form_ReciboDesconectado = new ReciboDeposito(deposito.ID);
+                        this.Hide();
+                        form_ReciboDesconectado.Show();
                     }
                     
                     context.SaveChanges();
                     
-                    MessageBox.Show("Deposito realizado con exito");
-
-
-                    //OperacionesCliente form_OpClientes = new OperacionesCliente();
-                    //this.Hide();
-                    //form_OpClientes.Show();
-                    ReciboDeposito form_ReciboD = new ReciboDeposito(deposito.ID);
-                    this.Hide();
-                    form_ReciboD.Show();
-
-                    //CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
-                    //this.Hide();
-                    //form_MainMenu.Show();
+                   
                 }
 
                 
@@ -189,6 +199,11 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
