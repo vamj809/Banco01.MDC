@@ -53,32 +53,57 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
         {
             if (textBox1.Text != "" && textBox2.Text != "" && label6.Text == "Conectado" )
             {
+
+
                 string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
-                try
+
+                SqlConnection prueba = new SqlConnection();
+                prueba.ConnectionString = con;
+
+                prueba.Open();
+
+
+                SqlCommand check_Client = new SqlCommand("SELECT COUNT(*) FROM [tblCliente] WHERE (Cedula = @cedula) ", prueba);
+                check_Client.Parameters.AddWithValue("@cedula", textBox1.Text);
+                int UserExist = (int)check_Client.ExecuteScalar();
+
+                SqlCommand check_LastName = new SqlCommand("SELECT COUNT(*) FROM [tblCliente] WHERE (Apellido = @apellido) AND Cedula="+textBox1.Text, prueba);
+                check_LastName.Parameters.AddWithValue("@apellido", textBox2.Text);
+                int lastNameExist = (int)check_Client.ExecuteScalar();
+
+
+                SqlCommand check_FirstName = new SqlCommand("SELECT COUNT(*) FROM [tblCliente] WHERE (Nombre = @nombre) AND Cedula=" + textBox1.Text, prueba);
+                check_Client.Parameters.AddWithValue("@nombre", textBox3.Text);
+                int FirstNameExist = (int)check_Client.ExecuteScalar();
+
+                if (UserExist == 1 && lastNameExist == 1 && FirstNameExist == 1)
                 {
-                    SqlConnection prueba = new SqlConnection();
-                    prueba.ConnectionString = con;
+                    //SqlCommand insertCommand = new SqlCommand("INSERT INTO tblMoviminetos (Fecha, id_transaccion, Monto, Tipo_transaccion) VALUES (@0, @1, @2, @3)", prueba);
+                    //insertCommand.Parameters.Add(new SqlParameter("0", deposito.Fecha));
+                    //insertCommand.Parameters.Add(new SqlParameter("1", deposito.ID));
+                    //insertCommand.Parameters.Add(new SqlParameter("2", deposito.Monto));
+                    //insertCommand.Parameters.Add(new SqlParameter("3", "Deposito"));
 
-                    prueba.Open();
-                    
+                    //insertCommand.ExecuteNonQuery();
+                    //prueba.Close();
 
-                    prueba.Close();
+                    //MessageBox.Show("Deposito realizado con exito");
+                    //ReciboDeposito form_ReciboDConectado = new ReciboDeposito(deposito.ID);
+                    //this.Hide();
+                    //form_ReciboDConectado.Show();
 
 
                     MessageBox.Show("Datos correctos", "Datos Correctos");
                     Retirar form_Retiro = new Retirar(CurrentUser, Balance);
                     this.Hide();
                     form_Retiro.Show();
-
-
                 }
-
-                catch (Exception ConnectionError)
+                else
                 {
-                    MessageBox.Show(ConnectionError.Message);
-                    label6.ForeColor = Color.Red;
-                    label6.Text = "No conectado";
+                    MessageBox.Show("Los datos ingresados no se encuentran en la base de datos. Por favor ingrese datos validos.");
                 }
+
+
 
                 //MessageBox.Show("Datos correctos", "Datos Correctos");
                 //Retirar form_Retiro = new Retirar(CurrentUser, Balance);
@@ -113,6 +138,21 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                 label6.ForeColor = Color.Red;
                 label6.Text = "No conectado";
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

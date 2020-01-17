@@ -38,6 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -70,23 +72,24 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 135);
+            this.label3.Location = new System.Drawing.Point(15, 134);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(251, 13);
+            this.label3.Size = new System.Drawing.Size(234, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Por favor introduzca el nombre completo del cliente:";
+            this.label3.Text = "Por favor introduzca el/los apellido/s del cliente:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(18, 163);
+            this.textBox2.Location = new System.Drawing.Point(18, 161);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(232, 20);
             this.textBox2.TabIndex = 4;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // buttonConfirmar
             // 
-            this.buttonConfirmar.Location = new System.Drawing.Point(243, 216);
+            this.buttonConfirmar.Location = new System.Drawing.Point(260, 277);
             this.buttonConfirmar.Name = "buttonConfirmar";
             this.buttonConfirmar.Size = new System.Drawing.Size(125, 51);
             this.buttonConfirmar.TabIndex = 5;
@@ -96,7 +99,7 @@
             // 
             // buttonVolver
             // 
-            this.buttonVolver.Location = new System.Drawing.Point(80, 216);
+            this.buttonVolver.Location = new System.Drawing.Point(108, 277);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(125, 51);
             this.buttonVolver.TabIndex = 6;
@@ -131,11 +134,30 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Connection";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 199);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(233, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Por favor introduzca el/los nombre/s del cliente:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(19, 227);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(232, 20);
+            this.textBox3.TabIndex = 12;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
             // ComprobacionCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 299);
+            this.ClientSize = new System.Drawing.Size(397, 340);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -166,5 +188,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
