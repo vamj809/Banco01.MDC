@@ -75,7 +75,6 @@ namespace Banco01.MDC.Cuadre
             if (OnlyTodayCheck.Checked) {
                 Fecha_Inicio.Enabled = false;
                 Fecha_Fin.Enabled = false;
-
                 var filteredData = localDBEntity.DetallesCuadre.Local.ToBindingList()
                 .Where(x => x.Hora.Date.CompareTo(DateTime.Now.Date) == 0);
                 this.detallesCuadreBindingSource.DataSource = filteredData.Count() > 0 ?
