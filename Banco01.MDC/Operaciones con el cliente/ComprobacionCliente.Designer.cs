@@ -35,6 +35,9 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttonConfirmar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -42,9 +45,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 13);
+            this.label1.Size = new System.Drawing.Size(291, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Antes del proceso de retir debemos de verificar su identidad";
+            this.label1.Text = "Antes del proceso de retir debemos de verificar su identidad ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
@@ -101,11 +104,41 @@
             this.buttonVolver.UseVisualStyleBackColor = true;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(336, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "(ADVERTENCIA: Este proceso no esta disponible si no hay conexion)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(205, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Estado de la conexion: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(324, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Connection";
+            // 
             // ComprobacionCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 299);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.buttonConfirmar);
             this.Controls.Add(this.textBox2);
@@ -115,6 +148,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ComprobacionCliente";
             this.Text = "Comprobacion del cliente";
+            this.Load += new System.EventHandler(this.ComprobacionCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +163,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button buttonConfirmar;
         private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

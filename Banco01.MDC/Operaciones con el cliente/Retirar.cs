@@ -44,6 +44,8 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSetParaRecibos.TablaPrueba' table. You can move, or remove it, as needed.
+            this.tablaPruebaTableAdapter.Fill(this.dataSetParaRecibos.TablaPrueba);
             string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
             try
             {

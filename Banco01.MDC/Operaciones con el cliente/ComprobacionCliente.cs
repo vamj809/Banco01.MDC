@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Banco01.MDC.Resources;
 using Banco01.MDC.Cajero;
+using System.Data.SqlClient;
 
 namespace Banco01.MDC.Operaciones_con_el_cliente
 {
@@ -50,15 +51,68 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && textBox2.Text != "")
+            if (textBox1.Text != "" && textBox2.Text != "" && label6.Text == "Conectado" )
             {
-                MessageBox.Show("Datos correctos", "Datos Correctos");
-                Retirar form_Retiro = new Retirar(CurrentUser, Balance);
-                this.Hide();
-                form_Retiro.Show();
+                string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
+                try
+                {
+                    SqlConnection prueba = new SqlConnection();
+                    prueba.ConnectionString = con;
+
+                    prueba.Open();
+                    
+
+                    prueba.Close();
+
+
+                    MessageBox.Show("Datos correctos", "Datos Correctos");
+                    Retirar form_Retiro = new Retirar(CurrentUser, Balance);
+                    this.Hide();
+                    form_Retiro.Show();
+
+
+                }
+
+                catch (Exception ConnectionError)
+                {
+                    MessageBox.Show(ConnectionError.Message);
+                    label6.ForeColor = Color.Red;
+                    label6.Text = "No conectado";
+                }
+
+                //MessageBox.Show("Datos correctos", "Datos Correctos");
+                //Retirar form_Retiro = new Retirar(CurrentUser, Balance);
+                //this.Hide();
+                //form_Retiro.Show();
             }
             else
-                MessageBox.Show("Por favor llene todos los campos");
+                MessageBox.Show("El sistema no esta disponible actualmente. Los retiros no estan permitidos por esa razon");
+        }
+
+        private void ComprobacionCliente_Load(object sender, EventArgs e)
+        {
+            string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
+            try
+            {
+                SqlConnection prueba = new SqlConnection();
+                prueba.ConnectionString = con;
+
+                prueba.Open();
+
+                label6.ForeColor = Color.Green;
+                label6.Text = "Conectado";
+
+                prueba.Close();
+
+
+            }
+
+            catch (Exception ConnectionError)
+            {
+                MessageBox.Show(ConnectionError.Message);
+                label6.ForeColor = Color.Red;
+                label6.Text = "No conectado";
+            }
         }
     }
 }

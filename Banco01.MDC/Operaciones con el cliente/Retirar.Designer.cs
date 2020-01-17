@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tablaPruebaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetParaRecibosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetParaRecibos = new Banco01.MDC.DataSetParaRecibos();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,20 +44,40 @@
             this.textBox1 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.tablaPruebaTableAdapter = new Banco01.MDC.DataSetParaRecibosTableAdapters.TablaPruebaTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPruebaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tablaPruebaBindingSource, "Nombres", true));
+            this.comboBox1.DataSource = this.tablaPruebaBindingSource;
+            this.comboBox1.DisplayMember = "Nombres";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "<Ninguna cuenta seleccionada>"});
             this.comboBox1.Location = new System.Drawing.Point(25, 52);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(254, 21);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "            ";
+            this.comboBox1.ValueMember = "Nombres";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // tablaPruebaBindingSource
+            // 
+            this.tablaPruebaBindingSource.DataMember = "TablaPrueba";
+            this.tablaPruebaBindingSource.DataSource = this.dataSetParaRecibosBindingSource;
+            // 
+            // dataSetParaRecibosBindingSource
+            // 
+            this.dataSetParaRecibosBindingSource.DataSource = this.dataSetParaRecibos;
+            this.dataSetParaRecibosBindingSource.Position = 0;
+            // 
+            // dataSetParaRecibos
+            // 
+            this.dataSetParaRecibos.DataSetName = "DataSetParaRecibos";
+            this.dataSetParaRecibos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -168,6 +192,10 @@
             this.label7.Text = "Estado de la conexion: ";
             this.label7.Click += new System.EventHandler(this.label7_Click_1);
             // 
+            // tablaPruebaTableAdapter
+            // 
+            this.tablaPruebaTableAdapter.ClearBeforeFill = true;
+            // 
             // Retirar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,6 +216,9 @@
             this.Name = "Retirar";
             this.Text = "Retirar";
             this.Load += new System.EventHandler(this.Retirar_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPruebaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -208,5 +239,9 @@
         private System.Windows.Forms.NumericUpDown textBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.BindingSource dataSetParaRecibosBindingSource;
+        private DataSetParaRecibos dataSetParaRecibos;
+        private System.Windows.Forms.BindingSource tablaPruebaBindingSource;
+        private DataSetParaRecibosTableAdapters.TablaPruebaTableAdapter tablaPruebaTableAdapter;
     }
 }
