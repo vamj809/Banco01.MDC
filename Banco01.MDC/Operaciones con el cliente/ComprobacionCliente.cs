@@ -94,7 +94,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
 
                     MessageBox.Show("Datos correctos", "Datos Correctos");
-                    Retirar form_Retiro = new Retirar(CurrentUser, Balance);
+                    Retirar form_Retiro = new Retirar(textBox1.Text , Balance, CurrentUser);
                     this.Hide();
                     form_Retiro.Show();
                 }

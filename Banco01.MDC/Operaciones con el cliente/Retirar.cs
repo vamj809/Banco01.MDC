@@ -17,14 +17,18 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
     {
         private ValidaCajero_Result CurrentUser;
         private decimal BalanceCaja;
-        public Retirar(ValidaCajero_Result _currentUser = null, decimal _balanceCaja = 0)
+        public Retirar(string nroCuenta, decimal _balanceCaja = 0, ValidaCajero_Result _currentUser = null)
         {
-            if (_currentUser == null) {
+            if (_currentUser == null)
+            {
                 _currentUser = new CajeroEspecial();
             }
             CurrentUser = _currentUser;
             BalanceCaja = _balanceCaja;
+
             InitializeComponent();
+
+            label8.Text = nroCuenta;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,6 +48,9 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void Retirar_Load(object sender, EventArgs e)
         {
+
+            // TODO: This line of code loads data into the 'dataSetParaRecibos.tblCuenta' table. You can move, or remove it, as needed.
+            this.tblCuentaTableAdapter.Fill(this.dataSetParaRecibos.tblCuenta, label8.Text);
             // TODO: This line of code loads data into the 'dataSetParaRecibos.TablaPrueba' table. You can move, or remove it, as needed.
             this.tablaPruebaTableAdapter.Fill(this.dataSetParaRecibos.TablaPrueba);
             string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
@@ -107,7 +114,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex != 0   && textBox1.Value != 0)
+            if (textBox1.Value != 0)
             {
                 DialogResult dr2 = MessageBox.Show("¿Esta seguro de que estos son los datos correctos?", "Confirmacion de datos ", MessageBoxButtons.YesNo);
                 if (dr2 == DialogResult.Yes)
@@ -116,21 +123,27 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
                     //**** Sección de Cuadre ****//
                     int id_cuadre = -1;
-                    foreach (var data in context.CuadreDiario) {
-                        if (data.Fecha.Date == DateTime.Now.Date) {
+                    foreach (var data in context.CuadreDiario)
+                    {
+                        if (data.Fecha.Date == DateTime.Now.Date)
+                        {
                             id_cuadre = data.ID;
                             break;
                         }
                     }
                     int id_cajero = -1;
-                    foreach (var data in context.GetCajero(CurrentUser.Usuario)) {
+                    foreach (var data in context.GetCajero(CurrentUser.Usuario))
+                    {
                         id_cajero = data.ID;
                         break;
                     }
-                    if (id_cuadre != -1 && id_cajero != -1) {
+                    if (id_cuadre != -1 && id_cajero != -1)
+                    {
                         ///**** Verificacion de Balance Suficiente (en la caja) ****///
-                        if (textBox1.Value > BalanceCaja) {
-                            var entrada = new HistorialTransacciones() {
+                        if (textBox1.Value > BalanceCaja)
+                        {
+                            var entrada = new HistorialTransacciones()
+                            {
                                 IDCajero = id_cajero,
                                 IDCuadre = id_cuadre,
                                 Fecha_Hora = DateTime.Now,
@@ -140,8 +153,9 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                             context.HistorialTransacciones.Add(entrada);
                         }
                         ///**** Verificacion de Balance Suficiente (en la caja) ****///
-                        
-                        var transaccion = new HistorialTransacciones() {
+
+                        var transaccion = new HistorialTransacciones()
+                        {
                             IDCajero = id_cajero,
                             IDCuadre = id_cuadre,
                             Fecha_Hora = DateTime.Now,
@@ -154,42 +168,71 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                     //**** Sección de Cuadre ****//
 
 
-                    if (label6.Text == "Conectado") {
-                        MessageBox.Show("Retiro realizado con exito");
-
-                    }
-                    else
+                    if (label6.Text == "Conectado")
                     {
-                        MessageBox.Show("Retiro fuera de linea realizado con exito");
+
+
+                        string con = "Data Source=banquito.database.windows.net;initial catalog=DataBaseCore;persist security info=True;user id=lcabrera;password=cabreraL10";
+
+                        SqlConnection prueba = new SqlConnection();
+                        prueba.ConnectionString = con;
+                        Random rnd = new Random();
+                        prueba.Open();
+
+
+                        var retiro = new DepositoDatos()
+                        {
+                            Benefactor = "",
+                            Especificaciones = Convert.ToString(textBox2).Remove(0, 36),
+                            Monto = Convert.ToDecimal(textBox1.Text),
+                            Fecha = DateTime.Now,
+                            Nro_de_Cuenta = comboBox1.Text
+                        };
+
+
+                        SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [tblCuenta] WHERE (id_cuenta = @user)", prueba);
+                        check_User_Name.Parameters.AddWithValue("@user", textBox2.Text);
+                        int UserExist = (int)check_User_Name.ExecuteScalar();
+
+                        if (UserExist > 0)
+                        {
+                            SqlCommand insertCommand = new SqlCommand("INSERT INTO tblMoviminetos (Fecha, id_transaccion, Monto, Tipo_transaccion) VALUES (@0, @1, @2, @3)", prueba);
+                            insertCommand.Parameters.Add(new SqlParameter("0", retiro.Fecha));
+                            insertCommand.Parameters.Add(new SqlParameter("1", retiro.ID));
+                            insertCommand.Parameters.Add(new SqlParameter("2", retiro.Monto));
+                            insertCommand.Parameters.Add(new SqlParameter("3", "Retiro"));
+
+                            insertCommand.ExecuteNonQuery();
+                            prueba.Close();
+
+                            MessageBox.Show("Deposito realizado con exito");
+                            ReciboDeposito form_ReciboDConectado = new ReciboDeposito(retiro.ID);
+                            this.Hide();
+                            form_ReciboDConectado.Show();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Retiro fuera de linea realizado con exito");
+                        }
+
+                        //OperacionesCliente form_OpClientes = new OperacionesCliente();
+                        //this.Hide();
+                        //form_OpClientes.Show();
+                        CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
+                        this.Hide();
+                        form_MainMenu.Show();
                     }
 
-                    //OperacionesCliente form_OpClientes = new OperacionesCliente();
-                    //this.Hide();
-                    //form_OpClientes.Show();
-                    CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
-                    this.Hide();
-                    form_MainMenu.Show();
+
                 }
 
-
-            } else {
+            }
+            else
+            {
                 DialogResult dr = MessageBox.Show("Debe llenar los campos pertinentes.", "Accion Invalida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBox1.Focus();
             }
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label7_Click_1(object sender, EventArgs e)
-        {
 
         }
     }

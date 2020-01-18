@@ -33,5 +33,16 @@ namespace Banco01.MDC.Properties {
                 return ((string)(this["MDC_LocalDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=banquito.database.windows.net;Initial Catalog=DataBaseCore;Persist Se" +
+            "curity Info=True;User ID=lcabrera;Password=cabreraL10")]
+        public string DataBaseCoreConnectionString {
+            get {
+                return ((string)(this["DataBaseCoreConnectionString"]));
+            }
+        }
     }
 }

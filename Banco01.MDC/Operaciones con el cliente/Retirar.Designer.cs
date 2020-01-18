@@ -30,12 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tablaPruebaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tblCuentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetParaRecibosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetParaRecibos = new Banco01.MDC.DataSetParaRecibos();
+            this.tablaPruebaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -45,29 +44,32 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tablaPruebaTableAdapter = new Banco01.MDC.DataSetParaRecibosTableAdapters.TablaPruebaTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaPruebaBindingSource)).BeginInit();
+            this.tblCuentaTableAdapter = new Banco01.MDC.DataSetParaRecibosTableAdapters.tblCuentaTableAdapter();
+            this.label8 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.tblCuentaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPruebaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tablaPruebaBindingSource, "Nombres", true));
-            this.comboBox1.DataSource = this.tablaPruebaBindingSource;
-            this.comboBox1.DisplayMember = "Nombres";
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tblCuentaBindingSource, "id_cuenta", true));
+            this.comboBox1.DataSource = this.tblCuentaBindingSource;
+            this.comboBox1.DisplayMember = "id_cuenta";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(25, 52);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(254, 21);
             this.comboBox1.TabIndex = 0;
-            this.comboBox1.ValueMember = "Nombres";
+            this.comboBox1.ValueMember = "Id_cliente";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // tablaPruebaBindingSource
+            // tblCuentaBindingSource
             // 
-            this.tablaPruebaBindingSource.DataMember = "TablaPrueba";
-            this.tablaPruebaBindingSource.DataSource = this.dataSetParaRecibosBindingSource;
+            this.tblCuentaBindingSource.DataMember = "tblCuenta";
+            this.tblCuentaBindingSource.DataSource = this.dataSetParaRecibosBindingSource;
             // 
             // dataSetParaRecibosBindingSource
             // 
@@ -79,6 +81,11 @@
             this.dataSetParaRecibos.DataSetName = "DataSetParaRecibos";
             this.dataSetParaRecibos.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // tablaPruebaBindingSource
+            // 
+            this.tablaPruebaBindingSource.DataMember = "TablaPrueba";
+            this.tablaPruebaBindingSource.DataSource = this.dataSetParaRecibosBindingSource;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -88,26 +95,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Seleccione la cuenta de la que desea hacer un retiro";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(356, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Dinero en la cuenta: ";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(520, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = " $RD";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -175,32 +162,46 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(472, 83);
+            this.label6.Location = new System.Drawing.Point(473, 52);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "Connection";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(348, 83);
+            this.label7.Location = new System.Drawing.Point(349, 52);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Estado de la conexion: ";
-            this.label7.Click += new System.EventHandler(this.label7_Click_1);
             // 
             // tablaPruebaTableAdapter
             // 
             this.tablaPruebaTableAdapter.ClearBeforeFill = true;
+            // 
+            // tblCuentaTableAdapter
+            // 
+            this.tblCuentaTableAdapter.ClearBeforeFill = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(408, 315);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(125, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Label invisible importante";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label8.Visible = false;
             // 
             // Retirar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 337);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox1);
@@ -210,15 +211,14 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Retirar";
             this.Text = "Retirar";
             this.Load += new System.EventHandler(this.Retirar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaPruebaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblCuentaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetParaRecibos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaPruebaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,8 +229,6 @@
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
@@ -243,5 +241,8 @@
         private DataSetParaRecibos dataSetParaRecibos;
         private System.Windows.Forms.BindingSource tablaPruebaBindingSource;
         private DataSetParaRecibosTableAdapters.TablaPruebaTableAdapter tablaPruebaTableAdapter;
+        private System.Windows.Forms.BindingSource tblCuentaBindingSource;
+        private DataSetParaRecibosTableAdapters.tblCuentaTableAdapter tblCuentaTableAdapter;
+        private System.Windows.Forms.Label label8;
     }
 }
