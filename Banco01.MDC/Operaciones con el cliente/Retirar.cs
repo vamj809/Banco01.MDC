@@ -191,7 +191,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
 
 
                         SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [tblCuenta] WHERE (id_cuenta = @user)", prueba);
-                        check_User_Name.Parameters.AddWithValue("@user", textBox2.Text);
+                        check_User_Name.Parameters.AddWithValue("@user", comboBox1.Text);
                         int UserExist = (int)check_User_Name.ExecuteScalar();
 
                         if (UserExist > 0)
@@ -205,7 +205,7 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                             insertCommand.ExecuteNonQuery();
                             prueba.Close();
 
-                            MessageBox.Show("Deposito realizado con exito");
+                            MessageBox.Show("Retiro realizado con exito");
                             ReciboDeposito form_ReciboDConectado = new ReciboDeposito(retiro.ID);
                             this.Hide();
                             form_ReciboDConectado.Show();
@@ -214,14 +214,15 @@ namespace Banco01.MDC.Operaciones_con_el_cliente
                         else
                         {
                             MessageBox.Show("Retiro fuera de linea realizado con exito");
+                            CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
+                            this.Hide();
+                            form_MainMenu.Show();
                         }
 
                         //OperacionesCliente form_OpClientes = new OperacionesCliente();
                         //this.Hide();
                         //form_OpClientes.Show();
-                        CajaMenuPrincipal form_MainMenu = new CajaMenuPrincipal(CurrentUser);
-                        this.Hide();
-                        form_MainMenu.Show();
+
                     }
 
 
